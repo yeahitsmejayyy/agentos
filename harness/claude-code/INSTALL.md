@@ -12,6 +12,27 @@ OS="$(git -C . rev-parse --show-toplevel 2>/dev/null || echo "$PWD")"
 echo "$OS"   # sanity-check: should be the root of your agentos clone
 ```
 
+## Quick install (one command)
+
+From anywhere inside your clone:
+
+```bash
+bash harness/claude-code/install.sh        # add --no-cron to skip the hourly reindex schedule
+```
+
+`install.sh` does steps 1–4 below automatically and is **idempotent, path-derived, and vault-safe** —
+it instantiates the mind only if absent (never clobbers an existing vault), backs up and *dedup-merges*
+the hooks into `settings.json` (never overwrites your other hooks), and wires `CLAUDE.md` exactly once.
+Re-run it any time to repair or update an install. It honors `AGENT_OS_HOME` (mind), `CLAUDE_CONFIG_DIR`
+(host config), and infers the repo root from its own location.
+
+Then jump to **§5 · Genesis** (open a new session and name your instance) and **§6 · Verify**.
+
+> Prefer to run it by hand, or on a non-Claude-Code harness? The steps below are exactly what the
+> script automates — they remain the canonical, portable reference.
+
+---
+
 ## 0 · Prerequisites
 ```bash
 python3 --version     # REQUIRED (index + JSON-parsing fallback)
