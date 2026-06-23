@@ -1,6 +1,6 @@
 # agents — Private Agent Memory
 
-Each agent's own space. An agent reads the shared pool (self/projects/knowledge/decisions/sessions) and writes its private memory here. Copy `_template/` per agent (jarvis, researcher, analyst, builder) as a real need appears.
+Each agent's own space. An agent reads the shared pool (self/projects/knowledge/decisions/sessions) and writes its private memory here. Copy `_template/` per agent (the orchestrator, and each worker as the team grows) as a real need appears.
 
 Notes here are **`memory_type: semantic`** (the primary axis; the agent profile is durable identity);
 `type: self` is the topic label. `scratch/` is ephemeral and not indexed.

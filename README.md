@@ -54,13 +54,14 @@ agentos/
 ├── agents/        # the team — RISEN AGENT.md per agent (seed ships only the orchestrator; the team is grown)
 │   ├── orchestrator/   # the one you talk to — nameless, named at genesis
 │   ├── watcher/        # the evolution observer
-│   └── _template/      # scaffold for a new worker — the team grows from here
+│   └── _template/      # scaffold for a new agent — the team grows from here
 ├── shared/        # CONSTITUTION.md — the law all agents answer to (a frame, filled at genesis)
 ├── skills/        # shared, cross-agent skills
 ├── memory/        # the .mem skeleton → instantiates to ~/.agentos/.mem  (private)
 ├── procedural/    # the .proc skeleton → instantiates to ~/.agentos/.proc (publishable)
 └── harness/       # host adapters — the only part that changes per harness
-    └── claude-code/    # hooks, skills, index, INSTALL.md
+    ├── claude-code/    # hooks, skills, index, INSTALL.md
+    └── _template/      # scaffold for a new host adapter
 ```
 
 ## Status
