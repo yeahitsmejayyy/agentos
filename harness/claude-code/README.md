@@ -15,7 +15,8 @@ Ties Agent OS to Claude Code's hooks + skills. The universal core (`../../`) is 
 |---|---|---|
 | Capture floor | `SessionEnd` + `PreCompact` → `capture-session.sh` | raw session note → `sessions/` |
 | Rich summary | `wrap-session` skill (model) | structured session note → `sessions/` |
-| Orientation recall | `SessionStart` → `recall-orient.sh` | inject `home.md` + `self/` |
+| First-run genesis | `SessionStart` → `recall-orient.sh` detects no `self/identity.md` → `genesis` skill | nameless seed → named, personalized instance (see `GENESIS.md`) |
+| Orientation recall | `SessionStart` → `recall-orient.sh` | inject `home.md` + forked `self/constitution.md` + `self/` |
 | Per-prompt recall | `UserPromptSubmit` → `recall-prompt.sh` | **local semantic index** (`hooks/index/`), grep fallback → inject relevant notes |
 | Reindex | `hooks/index/reindex.sh` (cron) | refresh the vector index over the vault |
 | Consolidation | `consolidate-memory` skill | distill + propose promotions (you approve) |
