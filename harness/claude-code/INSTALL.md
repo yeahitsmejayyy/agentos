@@ -112,3 +112,26 @@ AGENT_OS_EMBED=ollama bash ~/.claude/hooks/agent-os/index/reindex.sh --rebuild
   them; the scripts tolerate the common variants.
 - Hooks run shell on your machine — review `~/.claude/hooks/agent-os/` before enabling (least privilege).
 - The `hash` embedding backend is lexical/weak; install Ollama (Step 7) for real semantic recall.
+
+## Verified — clean-machine proof (task 09)
+
+A from-scratch install was proven against a **pristine throwaway `$HOME`** (nothing preset), running the
+real `install.sh` and then invoking each installed hook **exactly as `settings.json` wires it**
+(`scratchpad/prove_clean_install.sh`, `--no-cron`). **18/18 checks passed:**
+
+- **Install:** mind (`.mem` + `.proc`) instantiated, adapter (hooks + `genesis` skill) installed,
+  `settings.json` written (4 hook events), `CLAUDE.md` wired — and the **memory index built**.
+- **Boot wiring:** the `CLAUDE.md` `@import`s for the constitution + orchestrator resolve to real files.
+- **Recall fires:** `recall-orient.sh` (SessionStart) signals genesis on a fresh vault, then — once
+  `self/identity.md` exists — stops signalling and injects identity; `recall-prompt.sh`
+  (UserPromptSubmit) runs clean and surfaces relevant memory.
+- **Capture fires:** `capture-session.sh` (SessionEnd) writes a raw session note, transcript tail included.
+
+**Gaps logged (honest residuals):**
+1. **No live Claude Code GUI session.** Hooks were invoked precisely as `settings.json` invokes them, but
+   not through an actual app restart — the genuine GUI first-boot is the one step only a human can run on
+   their own machine. Everything *up to* that is proven.
+2. **Cron not exercised here** (`--no-cron`) because `crontab` is per-user, not per-`$HOME`; cron
+   scheduling + idempotency were proven separately in task 08.
+3. The research feature-matrix line *"true fresh run not yet"* is now satisfied at the mechanism level —
+   reconcile that doc in task 16.
