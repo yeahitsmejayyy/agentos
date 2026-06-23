@@ -14,6 +14,10 @@ __pycache__/
 # Local editor / harness config
 .claude/settings.local.json
 
+# Local research bridge — points agents at the external research workspace.
+# Machine-specific absolute paths; reference-only. This repo is the source of truth.
+CLAUDE.md
+
 # A grown instance's live mind should never live in the seed repo.
 # (The mind homes at $AGENT_OS_HOME, default ~/.agentos — outside this tree.)
 .agentos/

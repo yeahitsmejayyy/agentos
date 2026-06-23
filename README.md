@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="cover.png" alt="Agent OS — a portable operating system for a personal team of AI agents" width="100%">
+</p>
+
 # Agent OS
 
 A portable, harness-agnostic operating system for a personal team of AI agents — an
