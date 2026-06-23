@@ -1,0 +1,17 @@
+{
+  "_comment": "Agent OS — Claude Code adapter. Merge this 'hooks' block into ~/.claude/settings.json. Copy hooks/*.sh to ~/.claude/hooks/agent-os/ and skills/* to ~/.claude/skills/. Set AGENT_OS_MEM if your vault is not at ~/.mem.",
+  "hooks": {
+    "SessionStart": [
+      { "matcher": "", "hooks": [ { "type": "command", "command": "bash ~/.claude/hooks/agent-os/recall-orient.sh", "timeout": 8000 } ] }
+    ],
+    "UserPromptSubmit": [
+      { "matcher": "", "hooks": [ { "type": "command", "command": "bash ~/.claude/hooks/agent-os/recall-prompt.sh", "timeout": 8000 } ] }
+    ],
+    "SessionEnd": [
+      { "matcher": "", "hooks": [ { "type": "command", "command": "bash ~/.claude/hooks/agent-os/capture-session.sh", "async": true, "timeout": 10000 } ] }
+    ],
+    "PreCompact": [
+      { "matcher": "", "hooks": [ { "type": "command", "command": "bash ~/.claude/hooks/agent-os/capture-session.sh", "async": true, "timeout": 10000 } ] }
+    ]
+  }
+}

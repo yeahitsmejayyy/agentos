@@ -1,0 +1,21 @@
+# OS noise
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Index artifacts (rebuildable cache — never source of truth)
+*.db
+*.sqlite
+*.sqlite3
+.index/
+
+# Local editor / harness config
+.claude/settings.local.json
+
+# A grown instance's live mind should never live in the seed repo.
+# (The mind homes at $AGENT_OS_HOME, default ~/.agentos — outside this tree.)
+.agentos/
+.mem/
+.proc/
