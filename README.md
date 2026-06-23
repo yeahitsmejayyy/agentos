@@ -51,11 +51,10 @@ local, rebuildable vector index. The Markdown stays the source of truth; the ind
 
 ```
 agentos/
-├── agents/        # the team — one AGENT.md per agent, written in RISEN
-│   ├── orchestrator/   # nameless template; named at genesis
-│   ├── researcher/ analyst/ builder/   # default workers
+├── agents/        # the team — RISEN AGENT.md per agent (seed ships only the orchestrator; the team is grown)
+│   ├── orchestrator/   # the one you talk to — nameless, named at genesis
 │   ├── watcher/        # the evolution observer
-│   └── _template/      # scaffold for a new agent
+│   └── _template/      # scaffold for a new worker — the team grows from here
 ├── shared/        # CONSTITUTION.md — the law all agents answer to (a frame, filled at genesis)
 ├── skills/        # shared, cross-agent skills
 ├── memory/        # the .mem skeleton → instantiates to ~/.agentos/.mem  (private)
