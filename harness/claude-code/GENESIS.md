@@ -186,3 +186,36 @@ The onboarding research and `os-mind-onboarding-analogy.md` still describe a shi
 **researcher/analyst/builder** starter crew and a close that "routes a task to a worker." This seed
 ships **orchestrator-only** ([[seed-ships-orchestrator-only]]). This spec reflects the orchestrator-only
 decision; the research explainers should be reconciled to match when the docs are refreshed.
+
+---
+
+## 11. Verification (task 07 — proved end-to-end)
+
+**Method:** a staged proof against a throwaway `$HOME` (`scratchpad/prove_genesis.sh`) — installs the
+mind per `INSTALL.md` (`cp memory → .mem`, `cp procedural → .proc`), then walks the whole arc. The
+interview itself was **simulated** (the run wrote exactly what `skills/genesis/SKILL.md` specifies for a
+mock user "Sam" / orchestrator "Atlas"); it was not yet driven through a live, restarted Claude Code
+session. **18/18 checks passed.**
+
+What's proven:
+- **Install → first run:** mind instantiates; `recall-orient.sh` detects no `self/identity.md` and emits
+  the FIRST RUN → genesis banner; exits clean on a bare vault.
+- **Genesis writes vault-only:** the four artifacts land in `self/` + `sessions/`; **`git diff` confirms
+  shipped `agents/` and `shared/` are untouched** — identity is memory, not code.
+- **Named instance boots:** no FIRST RUN banner; the forked `self/constitution.md` injects in full (as
+  law), and the name/user/voice inject from `self/identity.md`.
+- **Re-run safe:** identity present → the skill's edit-in-place path; repeated boots never re-trigger
+  genesis and never mutate identity.
+- **Abort-safe:** removing `self/identity.md` re-offers genesis next boot (the sentinel is the state).
+
+**Rough edges / follow-ups (honest residuals):**
+1. **Live conversational dogfood still pending.** This proved the mechanism, not a stranger restarting a
+   clean Claude Code session with the skill actually invoked. That true clean-machine run folds into
+   **task 09**.
+2. **`~/.claude` install seam untested here.** The proof installed the *mind* + ran the hook directly; it
+   did not exercise copying hooks/skills into `~/.claude/` — that's the installer's job (**task 08**).
+3. **Bootloader `@import` of the vault constitution (§5) still deferred** to task 08; governance
+   currently rides on recall-injection only.
+4. **The 4 KB `self/` injection cap** now excludes the constitution (good), but `identity.md` +
+   `about-me.md` still share it — a very large user model could approach truncation. Watch-item, not a
+   blocker.
