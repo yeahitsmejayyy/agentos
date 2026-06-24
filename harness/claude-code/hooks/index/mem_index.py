@@ -45,6 +45,13 @@ LEGACY_TYPE_MAP = {
 }
 
 
+def _under(root, *names):
+    """True if any path COMPONENT of root is one of names. Component match, not substring,
+    so a vault under a path like .../scratchpad/... is not wrongly excluded by '/scratch'."""
+    parts = root.split(os.sep)
+    return any(n in parts for n in names)
+
+
 def parse_note(path):
     text = open(path, encoding="utf-8", errors="ignore").read()
     fm, body = {}, text
@@ -91,7 +98,7 @@ def gather_mem():
     for b in DURABLE:
         base = os.path.join(MEM, b)
         for root, _, names in os.walk(base):
-            if "/_template" in root:
+            if _under(root, "_template"):
                 continue
             for fn in names:
                 if fn.endswith(".md") and not fn.startswith("_"):
@@ -99,7 +106,7 @@ def gather_mem():
     # sessions — rolling recent window only
     sbase = os.path.join(MEM, "sessions")
     for root, _, names in os.walk(sbase):
-        if "/_template" in root:
+        if _under(root, "_template"):
             continue
         for fn in names:
             if fn.endswith(".md") and not fn.startswith("_"):
@@ -117,7 +124,7 @@ def gather_mem():
     # agent private: profile + skills (scoped), never scratch
     abase = os.path.join(MEM, "agents")
     for root, _, names in os.walk(abase):
-        if "/scratch" in root or "/_template" in root:
+        if _under(root, "scratch", "_template"):
             continue
         for fn in names:
             if fn.endswith(".md") and not fn.startswith("_"):
@@ -137,7 +144,7 @@ def gather_proc():
     if not os.path.isdir(PROC):
         return files
     for root, _, names in os.walk(PROC):
-        if "/_template" in root:
+        if _under(root, "_template"):
             continue
         for fn in names:
             if not fn.endswith(".md") or fn.startswith("_"):

@@ -10,6 +10,21 @@ Layout:
 - `skills/` — self-written / learned skills (markdown)
 - `scratch/` — ephemeral working notes
 
+## Recall scope (verified)
+
+Per-agent memory has **three privacy tiers** — how each surfaces in recall (verified end-to-end):
+
+| Tier | Always-load orient | grep fallback | semantic index |
+|---|---|---|---|
+| `scratch/` | excluded | excluded | **never indexed** — truly private |
+| `profile.md` + `skills/` | excluded | excluded | **indexed** — discoverable on-demand |
+| shared pool (self/projects/…) | injected | searched | indexed |
+
+So an agent's `scratch/` is genuinely private (never recalled by anyone), while its `profile`/`skills`
+are kept out of the cheap always-on surface but are **discoverable cross-agent** via on-demand semantic
+recall (by design — so the system can surface "this agent already knows how to do X"). Nothing
+per-agent ever leaks into the always-load shared injection.
+
 <!-- mem-links:start (auto-maintained — edit above this line) -->
 ## Map
 _(empty — notes will appear here as they're written)_
