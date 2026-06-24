@@ -12,6 +12,9 @@
     ],
     "PreCompact": [
       { "matcher": "", "hooks": [ { "type": "command", "command": "bash ~/.claude/hooks/agent-os/capture-session.sh", "async": true, "timeout": 10000 } ] }
+    ],
+    "PostToolUse": [
+      { "matcher": "Write|Edit", "hooks": [ { "type": "command", "command": "bash ~/.claude/hooks/agent-os/reindex-on-write.sh", "timeout": 15000 } ] }
     ]
   }
 }

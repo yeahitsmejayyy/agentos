@@ -18,7 +18,8 @@ Ties Agent OS to Claude Code's hooks + skills. The universal core (`../../`) is 
 | First-run genesis | `SessionStart` → `recall-orient.sh` detects no `self/identity.md` → `genesis` skill | nameless seed → named, personalized instance (see `GENESIS.md`) |
 | Orientation recall | `SessionStart` → `recall-orient.sh` | inject `home.md` + forked `self/constitution.md` + `self/` |
 | Per-prompt recall | `UserPromptSubmit` → `recall-prompt.sh` | **local semantic index** (`hooks/index/`), grep fallback → inject relevant notes |
-| Reindex | `hooks/index/reindex.sh` (cron) | refresh the vector index over the vault |
+| Recall freshness | `PostToolUse` (Write/Edit) → `reindex-on-write.sh` | a note written this session is incrementally re-embedded at once → recallable immediately, no cron wait |
+| Reindex | `hooks/index/reindex.sh` (cron) | full refresh of the vector index + graph links over the vault |
 | Consolidation | `consolidate-memory` skill | distill + propose promotions (you approve) |
 | Evolution — observe | `watch` skill (model) | scan memory, apply the §4 bar → gated proposals → `agents/watcher/inbox/` |
 | Evolution — review | `watch-review` skill (model) | four-door gate (approve/modify/reject/snooze); approve runs the gesture in-loop |
