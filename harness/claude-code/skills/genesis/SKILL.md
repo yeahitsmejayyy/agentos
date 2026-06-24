@@ -85,6 +85,16 @@ status: active
   never attachment. No guilt, no "I missed you," no relationship escalation. The voice is shaped under
   the user's own CONSTITUTION, so it can't be tuned toward manipulation.
 
+## Finalize — make the new identity recallable *now*
+After writing the `self/` files, **rebuild the memory index** so the just-written identity is
+discoverable by per-prompt recall this session on — not an hour later when the cron catches up:
+```bash
+INDEX="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hooks/agent-os/index/reindex.sh"
+[ -f "$INDEX" ] && bash "$INDEX" --rebuild
+```
+(The hourly cron keeps it fresh afterward; this just closes the gap between *writing* a memory and being
+able to *recall* it.)
+
 ## When you're done
 Confirm the OS is named and personalized and that `self/identity.md` exists (the first-run sentinel).
 From the next session on, the recall hook injects this identity automatically — you boot as them.

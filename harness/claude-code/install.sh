@@ -64,10 +64,13 @@ if [ -f "$SETTINGS" ]; then
   cp "$SETTINGS" "$SETTINGS.bak.$(date -u +%Y%m%dT%H%M%SZ)"
   skip "backed up existing settings.json"
 fi
-python3 - "$SRC/settings.snippet.json" "$SETTINGS" <<'PY'
+python3 - "$SRC/settings.snippet.json" "$SETTINGS" "$HOOKS_DEST" <<'PY'
 import json, sys
-snip_path, settings_path = sys.argv[1], sys.argv[2]
-snip_hooks = json.load(open(snip_path)).get("hooks", {})
+snip_path, settings_path, hooks_dest = sys.argv[1], sys.argv[2], sys.argv[3]
+# Wire hooks to the ACTUAL install dir (absolute), not a "~/.claude" assumption — so an install into a
+# non-default CLAUDE_CONFIG_DIR (e.g. an isolated test home) runs THESE hooks, not the live ~/.claude ones.
+raw = open(snip_path).read().replace("~/.claude/hooks/agent-os", hooks_dest)
+snip_hooks = json.loads(raw).get("hooks", {})
 try:
     cur = json.load(open(settings_path))
 except (FileNotFoundError, ValueError):

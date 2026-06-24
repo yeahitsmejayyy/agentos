@@ -23,14 +23,14 @@ fi
 
 if [ -d "$MEM_DIR/self" ]; then
   echo "## Self (identity + user model)"
-  find "$MEM_DIR/self" -name '*.md' ! -name '_index.md' ! -name 'constitution.md' -exec cat {} \; 2>/dev/null | head -c 4000
+  find "$MEM_DIR/self" -name '*.md' ! -name '_index.md' ! -name 'constitution.md' -exec cat {} \; 2>/dev/null | head -c 4000 || true
   echo
 fi
 
 # Watcher inbox — surface a COUNT of waiting proposals (pure-pull; the Watcher never pushes).
 WINBOX="$MEM_DIR/agents/watcher/inbox"
 if [ -d "$WINBOX" ]; then
-  WCOUNT=$(grep -rlE '^status: (pending|snoozed)' "$WINBOX" 2>/dev/null | wc -l | tr -d ' ')
+  WCOUNT=$(grep -rlE '^status: (pending|snoozed)' "$WINBOX" 2>/dev/null | wc -l | tr -d ' ' || true)
   if [ "${WCOUNT:-0}" -gt 0 ]; then
     echo "## Watcher — $WCOUNT proposal(s) waiting"
     echo "Run \`/watch-review\` to approve / modify / reject / snooze. (The Watcher never acts on its own.)"

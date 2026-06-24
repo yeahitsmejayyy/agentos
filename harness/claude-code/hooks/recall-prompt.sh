@@ -18,7 +18,7 @@ if [ -f "$MEM_DIR/.index/index.db" ] && command -v python3 >/dev/null 2>&1; then
   OUT=$(AGENT_OS_MEM="$MEM_DIR" python3 "$DIR/index/mem_query.py" "$PROMPT" -k 5 2>/dev/null || true)
   [ -n "${OUT:-}" ] && { printf '%s\n' "$OUT"; exit 0; }
 fi
-KW=$(printf '%s' "$PROMPT" | tr 'A-Z' 'a-z' | grep -oE '[a-z]{4,}' | sort -u | head -8 | paste -sd'|' -)
+KW=$(printf '%s' "$PROMPT" | tr 'A-Z' 'a-z' | grep -oE '[a-z]{4,}' | sort -u | head -8 | paste -sd'|' - || true)
 [ -z "${KW:-}" ] && exit 0
 HITS=$(grep -rilE "$KW" "$MEM_DIR"/{self,projects,knowledge,decisions} 2>/dev/null | head -5 || true)
 [ -z "${HITS:-}" ] && exit 0
