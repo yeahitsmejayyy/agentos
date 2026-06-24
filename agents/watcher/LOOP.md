@@ -243,3 +243,26 @@ defer the automatic bar-tuning to v2 — record the decisions first, learn from 
    real exercise of that bucket (coordinate with task 13).
 5. **Defer to v2:** autonomous cadence (scheduled `/watch`) and automatic bar-tuning. v1 = manual pass,
    capture decisions, learn-by-hand.
+
+---
+
+## 14. Verification (task 12 — proved end-to-end)
+
+**Method:** a staged proof in a **sandbox** (throwaway vault + vault `.proc`, so the live mind and the
+real seed are never touched — `scratchpad/prove_watcher.sh`). The proposal is **genuine**, mined from
+this project: the staged throwaway-`$HOME` proof-harness was re-authored 4× across tasks 07/09/11/12 — a
+real `promote-standard` candidate that passes all six §4 gates. **11/11 checks passed.**
+
+The loop, proven in order:
+- **Observe → Propose:** the Watcher writes a gated proposal to its inbox — and at the propose stage
+  **nothing in the OS mutates** (no artifact written, real seed `git status` unchanged).
+- **Surface:** `recall-orient.sh` counts it → "1 proposal waiting" (pure-pull).
+- **Approve → Applied:** the gate runs the `promote-standard` gesture in-loop — the scaffold lands in the
+  **vault** `.proc/scaffolds/` (a promoted standard is the user's, not shipped in the seed), the proposal
+  is archived `approved` in `decided/`, and the decision is captured as a taste signal.
+- **No-mutation guarantee:** the real seed repo is untouched end-to-end; the gesture fires **only** on the
+  explicit approval, never before.
+
+**Note / follow-up:** the proof *applied* the promotion only in the sandbox. The genuine proposal it
+surfaced — promote the proof-harness pattern into a real `.proc` scaffold — is left for the user's actual
+gate, exactly as the propose-never-auto contract demands.
