@@ -28,6 +28,19 @@ Re-run it any time to repair or update an install. It honors `AGENT_OS_HOME` (mi
 
 Then jump to **§5 · Genesis** (open a new session and name your instance) and **§6 · Verify**.
 
+**Check or undo an install:**
+
+```bash
+bash harness/claude-code/doctor.sh        # read-only health check: hooks wired? skills present? paths resolve?
+bash harness/claude-code/uninstall.sh     # remove the adapter + bootloader wiring; your mind is left intact
+bash harness/claude-code/uninstall.sh --purge   # also delete the mind (~/.agentos) — irreversible
+```
+
+`doctor.sh` turns §6 below into a runnable diagnostic (exit 0 = healthy). `uninstall.sh` reverses the
+install step for step — **vault-safe by default** (it never touches `~/.agentos` unless you pass
+`--purge`), backs up `settings.json` / `CLAUDE.md`, and removes only Agent OS's own entries (your other
+hooks and skills survive).
+
 > Prefer to run it by hand, or on a non-Claude-Code harness? The steps below are exactly what the
 > script automates — they remain the canonical, portable reference.
 
