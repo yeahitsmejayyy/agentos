@@ -20,6 +20,9 @@ Ties Agent OS to Claude Code's hooks + skills. The universal core (`../../`) is 
 | Per-prompt recall | `UserPromptSubmit` → `recall-prompt.sh` | **local semantic index** (`hooks/index/`), grep fallback → inject relevant notes |
 | Reindex | `hooks/index/reindex.sh` (cron) | refresh the vector index over the vault |
 | Consolidation | `consolidate-memory` skill | distill + propose promotions (you approve) |
+| Evolution — observe | `watch` skill (model) | scan memory, apply the §4 bar → gated proposals → `agents/watcher/inbox/` |
+| Evolution — review | `watch-review` skill (model) | four-door gate (approve/modify/reject/snooze); approve runs the gesture in-loop |
+| Watcher inbox surface | `SessionStart` → `recall-orient.sh` | counts pending proposals → "N proposals waiting" (pure-pull) |
 
 ## Test-drive order
 Add `capture-session` first; confirm notes land. Then orientation recall, then build the semantic index and try per-prompt recall, then consolidation. Each step is independent and reversible.

@@ -26,6 +26,17 @@ if [ -d "$MEM_DIR/self" ]; then
   find "$MEM_DIR/self" -name '*.md' ! -name '_index.md' ! -name 'constitution.md' -exec cat {} \; 2>/dev/null | head -c 4000
   echo
 fi
+
+# Watcher inbox — surface a COUNT of waiting proposals (pure-pull; the Watcher never pushes).
+WINBOX="$MEM_DIR/agents/watcher/inbox"
+if [ -d "$WINBOX" ]; then
+  WCOUNT=$(grep -rlE '^status: (pending|snoozed)' "$WINBOX" 2>/dev/null | wc -l | tr -d ' ')
+  if [ "${WCOUNT:-0}" -gt 0 ]; then
+    echo "## Watcher — $WCOUNT proposal(s) waiting"
+    echo "Run \`/watch-review\` to approve / modify / reject / snooze. (The Watcher never acts on its own.)"
+    echo
+  fi
+fi
 # Standards library (.proc) — categorical "here's what standards exist", cheaply.
 [ -f "$PROC_DIR/home.md" ] && { echo "## Standards index (.proc/home.md)"; cat "$PROC_DIR/home.md"; echo; }
 [ -f "$PROC_DIR/standards.md" ] && { echo "## Standards (seed — principles)"; head -c 3000 "$PROC_DIR/standards.md"; echo; }
