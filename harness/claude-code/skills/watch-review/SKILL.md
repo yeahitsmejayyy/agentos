@@ -24,6 +24,9 @@ well. Then take exactly one door:
   - `add-skill` → scaffold `skills/<name>/SKILL.md` from the proposal.
   - `realign` → surface the drift and agree the correction with the user (no artifact — the change is the
     decision/attention itself).
+  - `propose-self-update` → append/refine the learned fact in `self/about-me` (the user model). Confirm the
+    wording with the user; keep the profile high-signal (curate, don't dump). This is the gesture that
+    *grows the mind* — it's what lets genesis stay light.
   Set the proposal `status: approved`.
 - **Modify** → adjust the proposal with the user, then approve the adjusted version. Record **what changed**
   (the highest-value taste signal). `status: modified`.

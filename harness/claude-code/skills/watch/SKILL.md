@@ -24,16 +24,21 @@ back to `shared/CONSTITUTION.md`). Look **across distinct sessions** for four si
 | Repeated manual work that fits a single-purpose worker | `add-agent` |
 | A repeated multi-step gesture | `add-skill` |
 | Work/direction drifting from the CONSTITUTION or the foundation-scope boundary | `realign` |
+| A durable thing learned about the user, not yet in their profile | `propose-self-update` |
 
 ## Apply the bar (silence is a feature)
 A candidate qualifies ONLY if it has **recurred ≥ 3 times across ≥ 2 distinct sessions** (a `realign` may
 fire on a single *clear* contradiction of the CONSTITUTION). Below the bar → stay silent; write nothing.
 
-## Run the §4 boundary test (all six, or drop it)
-For each surviving candidate, show each gate passing — or drop the candidate:
+## Run the §4 boundary test (system-growth kinds — all six, or drop it)
+For each `promote-standard` / `add-agent` / `add-skill` candidate, show each gate passing — or drop it:
 1. **Real present need** 2. **Serves the core purpose** 3. **Lives at the edge** 4. **Leanest version**
 5. **Keeps the invariants** (portable / sovereign / least-privilege / no-slop) 6. **Earns its complexity**.
 If you can't show all six, it's feature creep — do **not** propose it.
+
+The other two kinds aren't system additions, so they skip §4 and use their own bar: **`realign`** needs a
+*clear* CONSTITUTION/scope contradiction; **`propose-self-update`** needs something about the user that is
+*durable, true, and worth keeping the profile high-signal* — curate `self/about-me`, never bloat it.
 
 ## Write the proposal(s) — to the inbox, never the OS
 For each qualifying candidate, write `$MEM/agents/watcher/inbox/<YYYY-MM-DD>_<slug>.md`:
@@ -42,7 +47,7 @@ For each qualifying candidate, write `$MEM/agents/watcher/inbox/<YYYY-MM-DD>_<sl
 memory_type: episodic
 type: watcher-proposal
 date: <run: date -u +%Y-%m-%dT%H:%M:%SZ>
-kind: promote-standard | add-agent | add-skill | realign
+kind: promote-standard | add-agent | add-skill | realign | propose-self-update
 status: pending
 confidence: low | med | high
 urgent: false        # true ONLY if confidence AND value are both high
