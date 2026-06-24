@@ -66,12 +66,29 @@ agentos/
 
 ## Status
 
-This is an early, honest seed — built in the open, no overclaiming.
+An early, honest seed — built in the open, no overclaiming.
 
-- ✅ **Built:** the portable `.mem`/`.proc` stores + local index; recall/capture hooks; the
-  bootloader pattern; gated gestures (`wrap-session`, `consolidate-memory`, `promote-standard`).
-- 🔵 **Building:** the seed/instance split (nameless orchestrator, prompted constitution); **genesis**
-  (the first-run interview); the **Watcher**; a path-rewriting installer.
+**✅ Built — the core stores & loop:** the portable `.mem`/`.proc` stores + a local, rebuildable index;
+recall/capture hooks; the bootloader pattern; the gated gestures (`wrap-session`, `consolidate-memory`,
+`promote-standard`).
+
+**✅ Built — the seed/instance split:**
+
+- a **nameless orchestrator** (named at genesis) and the `CONSTITUTION.md` **frame** (forked at genesis);
+- **identity-as-memory** — name, voice, and forked values live in the vault and are read live, never
+  baked into shipped files;
+- **genesis** — the first-run interview that turns the seed into your instance
+  ([`harness/claude-code/GENESIS.md`](harness/claude-code/GENESIS.md) + the `genesis` skill);
+- the **Watcher** — its definition + loop ([`agents/watcher/`](agents/watcher/)) and the gated
+  `watch` / `watch-review` gestures;
+- a **path-rewriting installer** — [`install.sh`](harness/claude-code/install.sh): one command,
+  idempotent, vault-safe, with a safe `settings.json` merge.
+
+Each is proven at the mechanism level (sandbox / clean-machine harnesses).
+
+**🔵 Remaining:** the full **isolated-home install-and-test** of the finished seed end-to-end (the live
+genesis run); completing the **zeroing pass** (a few personal references still linger in the skeletons);
+and reconciling the research explainers to this shipped seed.
 
 ## Install
 
