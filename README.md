@@ -93,3 +93,7 @@ and reconciling the research explainers to this shipped seed.
 ## Install
 
 See [`harness/claude-code/INSTALL.md`](harness/claude-code/INSTALL.md).
+
+## License
+
+[MIT](LICENSE) © 2026 PJ Bell — use it, fork it, make it yours. (Sovereignty cuts both ways.)
