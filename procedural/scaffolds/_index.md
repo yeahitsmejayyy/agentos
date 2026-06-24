@@ -5,7 +5,7 @@ The widest rung: a whole project starting point, not a single component (e.g. th
 **`materializable: true`** (instantiate the whole starting point; the installer is Part B).
 
 Copy `_template/scaffold.md` to describe one. Ships empty — scaffolds are promoted from real templates
-PJ already reaches for.
+you already reach for.
 
 <!-- mem-links:start (auto-maintained — edit above this line) -->
 ## Map

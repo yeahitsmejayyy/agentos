@@ -10,7 +10,7 @@ materializable: false
 
 # Standards — the seed
 
-The day-one home for **principles**: plain-English rules for how PJ builds. The lowest rung of the
+The day-one home for **principles**: plain-English rules for how you build. The lowest rung of the
 fidelity ladder, highest flexibility. A principle that earns detail graduates to a `patterns/` note;
 one that earns code graduates to a `modules/` package — **with continuity** (this prose becomes the
 module's README).
@@ -33,6 +33,6 @@ empty state. → when this earns code, graduate to modules/data-table/.
 -->
 
 ### Package manager
-Default to **bun**. It's PJ's day-to-day choice — use it for installs, scripts, and runtime unless a
+Default to **bun**. A sensible default for JS/TS projects — use it for installs, scripts, and runtime unless a
 project says otherwise. Not dogmatic: pnpm, npm, and yarn are all fine when a repo, a teammate, or a
 constraint calls for them. Bun is the default, not a mandate — match the project you're in.

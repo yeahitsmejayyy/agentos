@@ -1,6 +1,6 @@
 # .mem — Home
 
-Index / Map of Content for PJ's memory vault. Orientation for humans **and** agents: what lives where.
+Index / Map of Content for your memory vault. Orientation for humans **and** agents: what lives where.
 
 Memory is organized along **two axes**. The **primary key is cognitive type** (`memory_type`) — the
 *kind* of memory a note is. **Topic** (the old six buckets) is a **secondary view** layered on top —
@@ -32,10 +32,10 @@ or an *episodic* one — topic can't predict type). Inside `.mem` the field is o
 (`sessions/` already implies episodic, the rest imply semantic); we carry it anyway so one uniform field serves
 recall across **both** stores.
 
-- **self/** — the user model: who PJ is, standards, preferences. [shared] · semantic
+- **self/** — the user model: who you are, standards, preferences. [shared] · semantic
 - **projects/** — one self-contained directory per project. [shared] · semantic
 - **knowledge/** — external durable facts, cross-project & reusable. [shared] · semantic
-- **decisions/** — PJ's decisions & learnings, cross-project & reusable. [shared] · semantic
+- **decisions/** — your decisions & learnings, cross-project & reusable. [shared] · semantic
 - **sessions/** — raw working log, time-ordered. The on-ramp; distilled upward over time. [shared] · episodic
 - **agents/** — each agent's private memory (profile / skills / scratch). [own] · semantic
 

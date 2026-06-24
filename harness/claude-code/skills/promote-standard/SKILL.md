@@ -1,6 +1,6 @@
 ---
 name: promote-standard
-description: Promote a proven component (and its tests) from real work into the .proc standards library as a reusable module — the gated producing-half mirror of memory consolidation. Use when PJ says "I'll reach for this again" about something just built. Proposes the promotion; PJ approves. Never auto-nominates.
+description: Promote a proven component (and its tests) from real work into the .proc standards library as a reusable module — the gated producing-half mirror of memory consolidation. Use when you say "I'll reach for this again" about something just built. Proposes the promotion; you approve. Never auto-nominates.
 allowed-tools: Read Write Bash Grep
 ---
 
@@ -10,7 +10,7 @@ The deliberate **promote gesture** that fills the standards library (`$AGENT_OS_
 — the producing-half mirror of `consolidate-memory`. A standard is *mined from work you actually did and
 liked*, never authored in the abstract. The gate question is simply: **"Will I reach for this again?"**
 
-> Invoked manually (by PJ, or proposed by `consolidate-memory` when it spots a procedural item).
+> Invoked manually (by you, or proposed by `consolidate-memory` when it spots a procedural item).
 > **Auto-nomination is deferred (Part B)** — start with the explicit gesture, learn what recurs later.
 
 ## Climb the fidelity ladder
@@ -44,11 +44,11 @@ for a principle/pattern, just write the note with correct frontmatter and skip t
      If a `patterns/` note already described this, carry its prose into the README (graduation with
      continuity — nothing thrown away).
 4. **Update `.proc/modules/_index.md`** (or run `reindex.sh`, which maintains the `[[links]]` block).
-5. **Propose, don't auto-commit.** Present the planned module dir + frontmatter to PJ and **wait for
+5. **Propose, don't auto-commit.** Present the planned module dir + frontmatter to you and **wait for
    approval** before writing — same propose-not-overwrite discipline as `consolidate-memory`.
 
 ## Guardrails (CONSTITUTION)
-- **Gated** — proposed, never automatic. PJ curates what graduates.
+- **Gated** — proposed, never automatic. You curate what graduates.
 - **Tests are non-negotiable** for a module — the oracle is the point.
 - **Never clobber** an existing standard; propose an update and flag the diff.
 - **Materialization installer is Part B** — this skill *creates the standard*; installing it into a

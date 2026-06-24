@@ -1,6 +1,6 @@
 # .proc — Home
 
-Index / Map of Content for PJ's **standards library** — the *producing half* of the Agent OS.
+Index / Map of Content for your **standards library** — the *producing half* of the Agent OS.
 Sibling to `.mem`: where `.mem` answers **"what do I know?"** (recall), `.proc` answers
 **"how do I build?"** (recall **or** materialize). Same Markdown-and-frontmatter shape, same local
 index engine — a separate, **publishable / open-sourceable** store.

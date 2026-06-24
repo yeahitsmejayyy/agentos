@@ -3,7 +3,7 @@
 **Status:** design (task 19). Build is task 20. **v2 supersedes the original heavy 7-question
 interview** — lighter, conversational, feel-forward. **Why the rewrite:** the live task-15 dogfood
 proved v1 worked but felt *long, wordy, and robotic* — and a long interview fights the whole thesis.
-**Source:** the onboarding research + that live finding + PJ's direction (OpenClaw's easy/fun/never-taxing
+**Source:** the onboarding research + that live finding + the design direction (OpenClaw's easy/fun/never-taxing
 onboarding; *"a nameless consciousness that grows with the user"*).
 
 Genesis turns the nameless seed into a named instance. But it does **not** try to *learn* the user — it

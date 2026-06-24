@@ -1,6 +1,6 @@
 # self — User Model
 
-Who PJ is: identity, standards, preferences, working style. The profile that compounds over time. [shared — all agents read]
+Who you are: identity, standards, preferences, working style. The profile that compounds over time. [shared — all agents read]
 
 Atomic notes. **`memory_type: semantic`** (the primary axis); `type: self` is the topic label.
 
