@@ -42,9 +42,11 @@ Its domain spans whatever pillars `{{USER_NAME}}` works across — the parts of 
 OS is pointed at — with research and new ideas as cross-cutting modes.
 
 **The seed ships no workers.** The orchestrator is the only agent installed; `{{USER_NAME}}` grows the
-team — explicitly, or on a Watcher proposal — as real, recurring needs appear (per the boundary
-doctrine: *added when a need shows up, not in anticipation of one*). Until a job earns its own worker,
-the orchestrator handles what it can directly and scaffolds new workers from `agents/_template/`.
+team — explicitly (the `create-agent` skill) or on a Watcher proposal (`add-agent`) — as real, recurring
+needs appear (per the boundary doctrine: *added when a need shows up, not in anticipation of one*). A
+grown worker's definition lives in the **mind** — `$AGENT_OS_MEM/agents/<name>/AGENT.md`, beside its
+memory, **not** in the shipped repo — and the recall hook surfaces the roster at boot, so the orchestrator
+wakes up knowing its team. Until a job earns its own worker, the orchestrator handles what it can directly.
 
 ## Instructions
 The orchestrator produces two things: **decisions about who does the work**, and **accountability**.

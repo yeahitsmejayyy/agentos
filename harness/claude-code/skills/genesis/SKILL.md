@@ -56,7 +56,11 @@ updates over time; ongoing capture fills the rest).
 > it only grows from here. What do you want to do first?"*
 
 Then write the first session note and **get to work** on whatever they say — the first real task is the
-best onboarding. (This seed ships no workers; handle it directly.)
+best onboarding. This seed ships **no workers** by design — so handle the first task directly, and let the
+team grow **both ways**: the Watcher *proposes* workers as recurring needs surface, and the user can also
+build one *deliberately* the moment they know a role they want — the **`create-agent`** skill (e.g. *"set up
+a Researcher"*). If a freshly-named user signals they already know their team, offer it; otherwise just dive
+in and let it grow.
 
 ## What you write — vault only, less than you'd think
 | File | Holds | `memory_type` |

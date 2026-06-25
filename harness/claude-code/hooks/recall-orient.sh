@@ -27,6 +27,26 @@ if [ -d "$MEM_DIR/self" ]; then
   echo
 fi
 
+# Grown team — workers the user has grown. Their AGENT.md lives in the mind (beside their memory),
+# NOT in the shipped repo. Surface a lightweight roster; read the full AGENT.md before delegating.
+if [ -d "$MEM_DIR/agents" ]; then
+  ROSTER=""
+  for d in "$MEM_DIR"/agents/*/; do
+    [ -d "$d" ] || continue
+    name="$(basename "$d")"
+    [ "$name" = "_template" ] && continue
+    [ -f "$d/AGENT.md" ] || continue   # only GROWN agents define here (shipped ones define in the repo)
+    role="$(grep -A1 '^## Role' "$d/AGENT.md" 2>/dev/null | sed -n '2p' | head -c 140 || true)"
+    ROSTER="${ROSTER}- **${name}** — ${role:-(see its AGENT.md)}"$'\n'
+  done
+  if [ -n "$ROSTER" ]; then
+    echo "## Your grown team (delegate to these workers)"
+    printf '%s' "$ROSTER"
+    echo "Each worker's full RISEN definition is at \`.mem/agents/<name>/AGENT.md\` — read it before delegating."
+    echo
+  fi
+fi
+
 # Watcher inbox — surface a COUNT of waiting proposals (pure-pull; the Watcher never pushes).
 WINBOX="$MEM_DIR/agents/watcher/inbox"
 if [ -d "$WINBOX" ]; then
