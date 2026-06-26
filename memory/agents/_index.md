@@ -9,7 +9,7 @@ Notes here are **`memory_type: semantic`** (the primary axis; the agent profile 
 
 Layout:
 - `AGENT.md` — for a **grown** worker, its RISEN definition (written by `create-agent` / the Watcher's `add-agent`)
-- `profile.md` — how the agent works, learned preferences, operating notes
+- `PROFILE.md` — how the agent works, learned preferences, operating notes
 - `skills/` — self-written / learned skills (markdown)
 - `scratch/` — ephemeral working notes
 
@@ -20,7 +20,7 @@ Per-agent memory has **three privacy tiers** — how each surfaces in recall (ve
 | Tier | Always-load orient | grep fallback | semantic index |
 |---|---|---|---|
 | `scratch/` | excluded | excluded | **never indexed** — truly private |
-| `profile.md` + `skills/` | excluded | excluded | **indexed** — discoverable on-demand |
+| `PROFILE.md` + `skills/` | excluded | excluded | **indexed** — discoverable on-demand |
 | shared pool (self/projects/…) | injected | searched | indexed |
 
 So an agent's `scratch/` is genuinely private (never recalled by anyone), while its `profile`/`skills`

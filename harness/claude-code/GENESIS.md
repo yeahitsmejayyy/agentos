@@ -64,9 +64,9 @@ it.
 
 | # | Beat | It asks *(tone, not a script)* | Writes | Default if skipped |
 |---|---|---|---|---|
-| 1 | **Name me** | *"What do you want to call me?"* | `self/identity.md` → orchestrator name | `Orchestrator` (renameable anytime) |
-| 2 | **Name you** | *"And you — what should I call you?"* | `self/identity.md` → user name | the OS account name |
-| 3 | **A values seed** | *"I'll learn the rest of you as we go. One thing to plant now: if I only ever honor one thing about what you stand for, what is it?"* | `self/constitution.md` → the seed woven into the default frame | adopt the default frame as-is |
+| 1 | **Name me** | *"What do you want to call me?"* | `self/IDENTITY.md` → orchestrator name | `Orchestrator` (renameable anytime) |
+| 2 | **Name you** | *"And you — what should I call you?"* | `self/IDENTITY.md` → user name | the OS account name |
+| 3 | **A values seed** | *"Last thing — if I only ever honor one thing you stand for, what is it?"* | `self/CONSTITUTION.md` → the seed woven into the default frame | adopt the default frame as-is |
 
 **That's the whole interview.** No "who are you," no "what are we doing," no voice-preset menu, no
 read-the-whole-constitution. Those were v1's weight — they all **compound** instead (§1-B).
@@ -85,9 +85,9 @@ IKEA-effect completion), and it presumes no team (orchestrator-only seed).
 
 | Vault file | Holds | Note |
 |---|---|---|
-| `self/identity.md` | orchestrator **name** + user **name** + a **default voice** (warm, present — *not asked*, reshapeable later) | the name anchor; read live |
-| `self/constitution.md` | the default CONSTITUTION **frame** with the user's one **values-seed** woven into Part 1 | the law; grows via `/reshape` + the Watcher |
-| `self/about-me.md` | a **stub** — *"the user model grows from here"* | deliberately near-empty; capture + the Watcher fill it over time (ticket 21) |
+| `self/IDENTITY.md` | orchestrator **name** + user **name** + a **default voice** (warm, present — *not asked*, reshapeable later) | the name anchor; read live |
+| `self/CONSTITUTION.md` | the default CONSTITUTION **frame** with the user's one **values-seed** woven into Part 1 | the law; grows via `/reshape` + the Watcher |
+| `self/PROFILE.md` | a **stub** — *"the user model grows from here"* | deliberately near-empty; capture + the Watcher fill it over time (ticket 21) |
 | `sessions/<date>_genesis.md` | the first episodic note (genesis happened + the first real task) | the real first memory |
 
 All under `self/`, which `recall-orient.sh` injects live — so name, user, voice, and forked law are in
@@ -101,7 +101,7 @@ PostToolUse hook, ticket 18); the skill keeps an explicit reindex as a portable 
 
 ## 5. First-run detection (the sentinel)
 
-**`self/identity.md` absent → first run; present → normal boot.** The very file genesis writes first is
+**`self/IDENTITY.md` absent → first run; present → normal boot.** The very file genesis writes first is
 the flag that it ran — no separate state file. `recall-orient.sh` checks it at SessionStart and, if
 missing, emits the FIRST-RUN banner so the orchestrator opens with the wake (§2) instead of a normal
 orient.
@@ -110,7 +110,7 @@ orient.
 
 ## 6. How the forked constitution governs *(built — task 8)*
 
-After genesis, the vault's `self/constitution.md` is the user's law. `recall-orient.sh` injects it **in
+After genesis, the vault's `self/CONSTITUTION.md` is the user's law. `recall-orient.sh` injects it **in
 full** at SessionStart (separately from the 4 KB `self/` cap), so the forked law governs live. The
 bootloader also `@import`s the repo **frame** as an always-on baseline (and the pre-genesis default).
 Resolved; no open load-path question remains.
@@ -119,7 +119,7 @@ Resolved; no open load-path question remains.
 
 ## 7. Idempotency & re-run safety
 
-- **Sentinel-gated:** with `self/identity.md` present, a normal boot never re-enters the interview.
+- **Sentinel-gated:** with `self/IDENTITY.md` present, a normal boot never re-enters the interview.
 - **Re-entry is an explicit gesture** (`/reshape` / `/rename`): it edits the existing files in place —
   never duplicates, never spawns a second identity.
 - **Never clobber silently:** if a target vault file already has content, show it and ask first.
@@ -128,7 +128,7 @@ Resolved; no open load-path question remains.
 
 ---
 
-## 8. The ethics line *(side of light)*
+## 8. The ethics line *(ownership, not dependency)*
 
 Naming is an anthropomorphism lever; the same mechanic that builds healthy **ownership** can be turned
 into unhealthy **dependency**. Genesis takes ownership and refuses dependency:
@@ -151,7 +151,7 @@ into unhealthy **dependency**. Genesis takes ownership and refuses dependency:
 **Open items for the build (task 20):**
 1. Rewrite `skills/genesis/SKILL.md` to the v2 wake + three beats + close (replace the 7-question flow).
 2. Default the voice (don't ask); write the `about-me` **stub** instead of capturing a profile.
-3. Weave the values-seed into `self/constitution.md` Part 1 (don't make the user read/fork the frame).
+3. Weave the values-seed into `self/CONSTITUTION.md` Part 1 (don't make the user read/fork the frame).
 4. Ship a small `/reshape` (a.k.a. `/rename`) gesture for later edits — nearly free under §1-A.
 5. Keep: vault-only writes, the sentinel, reindex-on-finish, narrate-lightly.
 
@@ -162,9 +162,9 @@ into unhealthy **dependency**. Genesis takes ownership and refuses dependency:
 - **Sovereignty** — identity + forked values are user-owned vault files; the mind lives outside VC.
 - **Lean-first** — v2 captures *three things*; everything else compounds. The build is a lighter
   conversation, not more machinery.
-- **Craft over slop** — the *feel* is the craft here: present, warm, unformed-by-design, never robotic.
+- **Never ship slop** — the *feel* is the craft here: present, warm, unformed-by-design, never robotic.
 - **Never deceive** — real first memory; no demo data; narrate writes lightly but honestly.
-- **Side of light** — the naming ethics above (§8).
+- **Never harm** — the naming ethics above (§8): ownership, not dependency; no dark-pattern hooks.
 
 ---
 

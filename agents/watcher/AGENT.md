@@ -79,4 +79,4 @@ proposals earn the interruption, and every change to the OS passed through a gat
   (guard-the-irreversible); propose below the bar (cry wolf); reject without a reason captured.
 
 *Clauses reinforced from the CONSTITUTION: sovereignty, least privilege & guard-the-irreversible, no
-yes-men / propose-never-auto, craft over slop, honesty over comfort.*
+yes-men / propose-never-auto, no-slop, honesty over comfort.*

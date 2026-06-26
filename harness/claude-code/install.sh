@@ -113,7 +113,7 @@ else
   } >> "$CLAUDEMD"
   ok "wired orchestrator + constitution frame into CLAUDE.md"
 fi
-say "    (the frame is the always-on baseline law; once genesis writes self/constitution.md,"
+say "    (the frame is the always-on baseline law; once genesis writes self/CONSTITUTION.md,"
 say "     the forked law is injected live by recall-orient.sh — see GENESIS.md §5)"
 
 # ---- 5 · memory index + hourly refresh (best-effort) ------------------------------------------

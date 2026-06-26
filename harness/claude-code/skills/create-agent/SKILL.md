@@ -1,6 +1,6 @@
 ---
 name: create-agent
-description: Deliberately add a worker to your team — the human-run twin of the Watcher's add-agent proposal. Use when you already know a role you want ("set up a Researcher", "I want an agent that drafts release notes"). Walks the RISEN frame, scaffolds agents/<name>/AGENT.md from the template, and wires it under the orchestrator + CONSTITUTION. Same destination as add-agent; you're just the trigger instead of the Watcher.
+description: Deliberately add a worker to your team — the human-run twin of the Watcher's add-agent proposal. Use when you already know a role you want ("set up a Researcher", "I want an agent that drafts release notes"). Walks the RISEN frame, scaffolds the agent into the mind at .mem/agents/<name>/ (definition + memory together), and wires it under the orchestrator + CONSTITUTION. Same destination as add-agent; you're just the trigger instead of the Watcher.
 allowed-tools: Read Write Bash
 ---
 
@@ -34,7 +34,7 @@ happen to be standing in.) The shipped agents (orchestrator, watcher) define in 
 1. **Name + role, lightly.** One worker, single-purpose. Get a name (kebab-case → the dir) and a one-line
    role. If they give only a name ("Researcher"), *draft* the RISEN from it and let them correct — don't
    interrogate. Keep it light, the way genesis is light.
-2. **Fill the RISEN frame** from `agents/_template/AGENT.md`: **Role** (specific enough to rule out generic
+2. **Fill the RISEN frame** from the mind's template (`$AGENT_OS_MEM/agents/_template/AGENT.md`): **Role** (specific enough to rule out generic
    output), **Instructions** (the deliverable + the standard it's held to), **Steps** (the repeatable
    process), **End Goal** (why the work matters), **Narrowing** (tone / format / scope / never). Propose a
    complete draft; refine with the user rather than asking five questions.
@@ -42,7 +42,7 @@ happen to be standing in.) The shipped agents (orchestrator, watcher) define in 
    (A worker growing a second job is the signal to split — the orchestrator's own rule, applied at birth.)
 4. **Scaffold — absolute path, never clobber.** Copy `$AGENT_OS_MEM/agents/_template/` →
    `$AGENT_OS_MEM/agents/<name>/`, then write the filled `AGENT.md` into it. The memory subdirs
-   (`profile.md`, `skills/`, `scratch/`) come with the template — so the agent's definition and its
+   (`PROFILE.md`, `skills/`, `scratch/`) come with the template — so the agent's definition and its
    memory share one portable folder. If `$AGENT_OS_MEM/agents/<name>/` already exists, show it and stop.
 5. **Wire + close.** End the `AGENT.md` with the CONSTITUTION clauses this role most reinforces. No registry
    to edit — the orchestrator discovers its grown team by reading `$AGENT_OS_MEM/agents/*/AGENT.md` (the

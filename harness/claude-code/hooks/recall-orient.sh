@@ -7,9 +7,9 @@ MEM_DIR="${AGENT_OS_MEM:-${AGENT_OS_HOME:-$HOME/.agentos}/.mem}"
 PROC_DIR="${AGENT_OS_PROC:-${AGENT_OS_HOME:-$HOME/.agentos}/.proc}"
 
 # First run? No identity written yet → the orchestrator must conduct genesis.
-if [ ! -f "$MEM_DIR/self/identity.md" ]; then
+if [ ! -f "$MEM_DIR/self/IDENTITY.md" ]; then
   echo "## FIRST RUN — genesis not yet done"
-  echo "This Agent OS has no identity yet (no \`self/identity.md\`). You are the **nameless"
+  echo "This Agent OS has no identity yet (no \`self/IDENTITY.md\`). You are the **nameless"
   echo "orchestrator**. Your first and only job this session is to conduct **genesis**: run the"
   echo "\`genesis\` skill — name yourself, get to know the user, fork the CONSTITUTION into their"
   echo "words, and write the first \`self/\` memories. Do that before anything else."
@@ -19,11 +19,11 @@ fi
 [ -f "$MEM_DIR/home.md" ] && { echo "## Memory index (.mem/home.md)"; cat "$MEM_DIR/home.md"; echo; }
 
 # The forked CONSTITUTION is the law — inject it in FULL (not under the capped self/ block below).
-[ -f "$MEM_DIR/self/constitution.md" ] && { echo "## Constitution (the user's forked law — self/constitution.md)"; cat "$MEM_DIR/self/constitution.md"; echo; }
+[ -f "$MEM_DIR/self/CONSTITUTION.md" ] && { echo "## Constitution (the user's forked law — self/CONSTITUTION.md)"; cat "$MEM_DIR/self/CONSTITUTION.md"; echo; }
 
 if [ -d "$MEM_DIR/self" ]; then
   echo "## Self (identity + user model)"
-  find "$MEM_DIR/self" -name '*.md' ! -name '_index.md' ! -name 'constitution.md' -exec cat {} \; 2>/dev/null | head -c 4000 || true
+  find "$MEM_DIR/self" -name '*.md' ! -name '_index.md' ! -name 'CONSTITUTION.md' -exec cat {} \; 2>/dev/null | head -c 4000 || true
   echo
 fi
 

@@ -15,8 +15,8 @@ Ties Agent OS to Claude Code's hooks + skills. The universal core (`../../`) is 
 |---|---|---|
 | Capture floor | `SessionEnd` + `PreCompact` → `capture-session.sh` | raw session note → `sessions/` |
 | Rich summary | `wrap-session` skill (model) | structured session note → `sessions/` |
-| First-run genesis | `SessionStart` → `recall-orient.sh` detects no `self/identity.md` → `genesis` skill | nameless seed → named, personalized instance (see `GENESIS.md`) |
-| Orientation recall | `SessionStart` → `recall-orient.sh` | inject `home.md` + forked `self/constitution.md` + `self/` |
+| First-run genesis | `SessionStart` → `recall-orient.sh` detects no `self/IDENTITY.md` → `genesis` skill | nameless seed → named, personalized instance (see `GENESIS.md`) |
+| Orientation recall | `SessionStart` → `recall-orient.sh` | inject `home.md` + forked `self/CONSTITUTION.md` + `self/` |
 | Per-prompt recall | `UserPromptSubmit` → `recall-prompt.sh` | **local semantic index** (`hooks/index/`), grep fallback → inject relevant notes |
 | Recall freshness | `PostToolUse` (Write/Edit) → `reindex-on-write.sh` | a note written this session is incrementally re-embedded at once → recallable immediately, no cron wait |
 | Reindex | `hooks/index/reindex.sh` (cron) | full refresh of the vector index + graph links over the vault |

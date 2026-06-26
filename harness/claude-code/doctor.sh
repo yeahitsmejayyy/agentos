@@ -82,7 +82,7 @@ else
 fi
 
 say "genesis state"
-[ -f "$MEM/self/identity.md" ] && ok "named instance (genesis done)" || warn "no identity yet — first boot will run genesis"
+[ -f "$MEM/self/IDENTITY.md" ] && ok "named instance (genesis done)" || warn "no identity yet — first boot will run genesis"
 
 say ""
 if [ $FAIL -eq 0 ]; then say "✓ healthy — 0 problems, $WARN warning(s)"; exit 0

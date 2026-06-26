@@ -136,7 +136,7 @@ real `install.sh` and then invoking each installed hook **exactly as `settings.j
   `settings.json` written (4 hook events), `CLAUDE.md` wired — and the **memory index built**.
 - **Boot wiring:** the `CLAUDE.md` `@import`s for the constitution + orchestrator resolve to real files.
 - **Recall fires:** `recall-orient.sh` (SessionStart) signals genesis on a fresh vault, then — once
-  `self/identity.md` exists — stops signalling and injects identity; `recall-prompt.sh`
+  `self/IDENTITY.md` exists — stops signalling and injects identity; `recall-prompt.sh`
   (UserPromptSubmit) runs clean and surfaces relevant memory.
 - **Capture fires:** `capture-session.sh` (SessionEnd) writes a raw session note, transcript tail included.
 

@@ -15,7 +15,7 @@ only output is **gated proposals** written to your inbox; the user decides later
 - Inbox: `$MEM/agents/watcher/inbox/` (create if missing).
 
 ## Observe (read the mind)
-Read recent `sessions/`, `decisions/`, the user model `self/`, and the law `self/constitution.md` (fall
+Read recent `sessions/`, `decisions/`, the user model `self/`, and the law `self/CONSTITUTION.md` (fall
 back to `shared/CONSTITUTION.md`). Look **across distinct sessions** for four signal classes:
 
 | Signal | Proposal kind |

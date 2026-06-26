@@ -1,7 +1,7 @@
 # <Agent Name>
 
 > **Frame.** A **grown** worker's definition. It lives *here, in the mind* —
-> `.mem/agents/<name>/AGENT.md`, beside this agent's own memory (`profile.md`, `skills/`, `scratch/`) —
+> `.mem/agents/<name>/AGENT.md`, beside this agent's own memory (`PROFILE.md`, `skills/`, `scratch/`) —
 > **not** in the shipped seed repo. That's the seed-vs-instance line: the shipped agents (orchestrator,
 > watcher) define their RISEN in the repo's `agents/`; the team **you grow** defines it here, portable
 > with your mind and outside the harness. Written by the `create-agent` skill (or the Watcher's
