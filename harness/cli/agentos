@@ -1,0 +1,81 @@
+#!/bin/bash
+# Agent OS — generic CLI harness adapter. Boots the SAME OS (agents/ + shared/) on the SAME Mind
+# (~/.agentos) as the Claude Code adapter — only the *wiring* differs. This is the proof of the
+# three-plane design: OS + Mind are portable; the harness is swappable. Drive it from any LLM CLI/REPL,
+# a script, or by hand:
+#   agentos boot               # print the system prompt (set as your host's system message)
+#   agentos recall "<text>"    # per-turn recall to inject before a prompt
+#   agentos capture [reason]   # capture floor: write a raw session note to the vault
+#   agentos reindex [--rebuild]# refresh the memory index
+set -uo pipefail
+OS="$(cd "$(dirname "$0")/../.." && pwd)"                 # repo root: harness/cli/ -> ../../
+HOME_DIR="${AGENT_OS_HOME:-$HOME/.agentos}"
+MEM="${AGENT_OS_MEM:-$HOME_DIR/.mem}"
+PROC="${AGENT_OS_PROC:-$HOME_DIR/.proc}"
+INDEX="$OS/harness/claude-code/hooks/index"              # the portable index engine (shared across adapters)
+
+boot() {
+  echo "# ===== Agent OS — boot context (generic CLI adapter) ====="
+  echo
+  if [ ! -f "$MEM/self/IDENTITY.md" ]; then
+    echo "## FIRST RUN — no identity yet"
+    echo "Run the **genesis** skill (\`$OS/harness/claude-code/skills/genesis/SKILL.md\`): name the"
+    echo "orchestrator, name yourself, plant one value. Until then you are the nameless orchestrator."
+    echo
+  fi
+  echo "## Orchestrator"; cat "$OS/agents/orchestrator/AGENT.md"; echo
+  if [ -f "$MEM/self/CONSTITUTION.md" ]; then
+    echo "## CONSTITUTION (your forked law)"; cat "$MEM/self/CONSTITUTION.md"
+  else
+    echo "## CONSTITUTION (default frame — forked at genesis)"; cat "$OS/shared/CONSTITUTION.md"
+  fi
+  echo
+  if [ -d "$MEM/self" ]; then
+    echo "## Self (identity + user model)"
+    find "$MEM/self" -name '*.md' ! -name '_index.md' ! -name 'CONSTITUTION.md' -exec cat {} \; 2>/dev/null
+    echo
+  fi
+  if [ -d "$MEM/agents" ]; then
+    roster=""
+    for d in "$MEM"/agents/*/; do
+      [ -d "$d" ] || continue; n="$(basename "$d")"; [ "$n" = "_template" ] && continue
+      [ -f "$d/AGENT.md" ] || continue
+      role="$(grep -A1 '^## Role' "$d/AGENT.md" 2>/dev/null | sed -n '2p' | head -c 140 || true)"
+      roster="${roster}- ${n}: ${role:-(see its AGENT.md)}"$'\n'
+    done
+    if [ -n "$roster" ]; then echo "## Your grown team"; printf '%s' "$roster"; echo; fi
+  fi
+}
+
+recall() {
+  [ -n "${1:-}" ] || { echo "usage: agentos recall \"<text>\"" >&2; return 1; }
+  if [ -f "$MEM/.index/index.db" ] && command -v python3 >/dev/null 2>&1; then
+    AGENT_OS_MEM="$MEM" python3 "$INDEX/mem_query.py" "$*" -k 5
+  else
+    echo "(no index yet — run \`agentos reindex\`)" >&2; return 1
+  fi
+}
+
+capture() {
+  local reason sid date stamp out
+  reason="${*:-session end}"
+  sid="cli-$(date -u +%Y%m%dT%H%M%SZ)"; date="$(date -u +%Y-%m-%d)"; stamp="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+  mkdir -p "$MEM/sessions"; out="$MEM/sessions/${date}_${sid}.md"
+  { echo "---"; echo "memory_type: episodic"; echo "type: session"; echo "date: $stamp"
+    echo "tags: [raw-capture, cli]"; echo "agent:"; echo "project:"; echo "status: active"; echo "---"; echo
+    echo "# Session $sid (raw capture — cli adapter)"; echo
+    echo "**Ended:** $stamp · **Reason:** $reason"
+  } > "$out"
+  echo "captured → $out"
+}
+
+reindex() { AGENT_OS_HOME="$HOME_DIR" AGENT_OS_MEM="$MEM" AGENT_OS_PROC="$PROC" bash "$INDEX/reindex.sh" "$@"; }
+
+cmd="${1:-}"; [ "$#" -gt 0 ] && shift
+case "$cmd" in
+  boot)    boot ;;
+  recall)  recall "$@" ;;
+  capture) capture "$@" ;;
+  reindex) reindex "$@" ;;
+  *) echo "usage: agentos {boot | recall \"<text>\" | capture [reason] | reindex [--rebuild]}" >&2; exit 1 ;;
+esac
