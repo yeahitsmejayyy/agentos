@@ -11,6 +11,7 @@ jget(){ local json="$1"; shift
   elif command -v python3 >/dev/null 2>&1; then
     for k in "$@"; do v=$(printf '%s' "$json" | python3 -c "import sys,json;print(json.load(sys.stdin).get('$k',''))" 2>/dev/null); [ -n "${v:-}" ] && { printf '%s' "$v"; return; }; done
   fi
+  return 0   # a getter: "not found" is an empty string, never a failure (don't trip set -e on assignment)
 }
 SID=$(jget "$HOOK_JSON" session_id sessionId); SID=${SID:-unknown}
 REASON=$(jget "$HOOK_JSON" reason); REASON=${REASON:-n/a}

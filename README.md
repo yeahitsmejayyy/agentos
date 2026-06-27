@@ -94,6 +94,15 @@ and reconciling the research explainers to this shipped seed.
 
 See [`harness/claude-code/INSTALL.md`](harness/claude-code/INSTALL.md).
 
+## Tests
+
+```bash
+bash tests/run.sh
+```
+
+A deterministic regression suite (no LLM, no network) — seed purity, the memory index, the recall/reindex
+hooks, and the full install lifecycle. See [`tests/README.md`](tests/README.md).
+
 ## License
 
-[MIT](LICENSE) © 2026 PJ Bell — use it, fork it, make it yours. (Sovereignty cuts both ways.)
+[MIT](LICENSE) © 2026 yeahitsmejayyy — use it, fork it, make it yours. (Sovereignty cuts both ways.)
