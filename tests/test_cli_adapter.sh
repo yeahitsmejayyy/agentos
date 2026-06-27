@@ -36,8 +36,9 @@ help="$(bash "$BIN" help 2>/dev/null || true)"
 contains "agentos help: lists manage + run verbs" "$help" "boot"
 bash "$BIN" bogus-cmd >/dev/null 2>&1; rc=$?
 eq "agentos: unknown command exits non-zero" "1" "$rc"
-# a not-yet-built feature routes gracefully (backup arrives in task 34)
+# backup now works through the front door (task 34)
 env HOME="$T" bash "$BIN" backup >/dev/null 2>&1; rc=$?
-eq "agentos backup: routes (not-available until built)" "1" "$rc"
+eq "agentos backup: runs through the dispatcher" "0" "$rc"
+if ls "$T"/.agentos-snapshots/mind-*.tar.gz >/dev/null 2>&1; then ok "agentos backup: snapshot lands outside the mind"; else no "agentos backup: snapshot lands outside the mind"; fi
 
 rm -rf "$T"

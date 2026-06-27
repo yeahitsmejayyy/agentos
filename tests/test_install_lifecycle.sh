@@ -86,5 +86,6 @@ eq "doctor: unhealthy after uninstall (exit 1)" "1" "$rc"
 env HOME="$T" bash "$HARNESS/install.sh" --no-cron >/dev/null 2>&1
 env HOME="$T" bash "$HARNESS/uninstall.sh" --purge >/dev/null 2>&1
 check "uninstall --purge: mind removed" test ! -e "$T/.agentos"
+if ls "$T"/.agentos-snapshots/mind-*.tar.gz >/dev/null 2>&1; then ok "uninstall --purge: auto-snapshot kept (mind recoverable)"; else no "uninstall --purge: auto-snapshot kept (mind recoverable)"; fi
 
 rm -rf "$T"

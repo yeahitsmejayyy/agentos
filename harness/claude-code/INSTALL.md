@@ -39,7 +39,7 @@ agentos install            # = bash harness/claude-code/install.sh   (or: agento
 agentos doctor             # health check
 agentos uninstall [--purge]
 agentos materialize <name> <target-dir>           # install a .proc module's code
-agentos backup | restore                          # snapshot / restore the mind
+agentos backup | restore                          # snapshot / restore the mind (→ ~/.agentos-snapshots/)
 agentos boot | recall "<q>" | capture | reindex   # run Agent OS on a generic host (the cli adapter)
 ```
 

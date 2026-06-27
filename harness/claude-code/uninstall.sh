@@ -107,7 +107,15 @@ fi
 # ---- 6 · the mind (vault-safe; only with --purge) ----------------------------------------------
 say "6 · mind"
 if [ $PURGE = 1 ]; then
-  [ -e "$HOME_DIR" ] && { rm -rf "$HOME_DIR"; ok "PURGED the mind ($HOME_DIR)"; } || skip "no mind to purge"
+  if [ -e "$HOME_DIR" ]; then
+    # Safety: snapshot the mind before destroying it — the destructive path can never lose it.
+    if [ -f "$OS/bin/backup.sh" ]; then
+      AGENT_OS_HOME="$HOME_DIR" bash "$OS/bin/backup.sh" backup || skip "pre-purge snapshot failed (continuing)"
+    fi
+    rm -rf "$HOME_DIR"; ok "PURGED the mind ($HOME_DIR) — snapshot kept in ${HOME_DIR}-snapshots/"
+  else
+    skip "no mind to purge"
+  fi
 else
   skip "mind preserved ($HOME_DIR) — re-run with --purge to remove it"
 fi
