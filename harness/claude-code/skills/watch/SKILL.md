@@ -16,7 +16,10 @@ only output is **gated proposals** written to your inbox; the user decides later
 
 ## Observe (read the mind)
 Read recent `sessions/`, `decisions/`, the user model `self/`, and the law `self/CONSTITUTION.md` (fall
-back to `shared/CONSTITUTION.md`). Look **across distinct sessions** for seven signal classes:
+back to `shared/CONSTITUTION.md`). Also pull the **usage signals**: `python3 <index>/mem_usage.py` —
+recall hit-rates showing what's *valuable* (recalled often) vs *never recalled* (the evidence behind
+`propose-retire`, and the recurrence behind `promote-standard`). Look **across distinct sessions** for
+seven signal classes:
 
 | Signal | Proposal kind |
 |---|---|

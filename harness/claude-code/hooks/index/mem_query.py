@@ -11,7 +11,7 @@ Usage: python3 mem_query.py "how do I scope a project" -k 5
        python3 mem_query.py "data table" --type procedural --store proc
 Env:   AGENT_OS_MEM (default ~/.agentos/.mem), AGENT_OS_PROC (default ~/.agentos/.proc)
 """
-import os, sys, sqlite3, struct, math, argparse
+import os, sys, sqlite3, struct, math, argparse, json, time
 import lib_embed
 
 HOME_DIR = os.environ.get("AGENT_OS_HOME", os.path.expanduser("~/.agentos"))  # one portable unit
@@ -38,6 +38,19 @@ def rel_to_store(path, store):
         return os.path.relpath(path, root)
     except ValueError:
         return path
+
+
+def log_hits(top):
+    """Append the recalled files to a usage log — the Watcher's signal for what's *valuable* (recalled
+    often) vs *unused* (never recalled → a retire candidate). Best-effort: never let logging break recall."""
+    try:
+        ts = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+        rec = {"ts": ts, "hits": [{"path": rel_to_store(p, st), "store": st or "mem"} for _, p, _, _, st in top]}
+        idx = os.path.join(MEM, ".index"); os.makedirs(idx, exist_ok=True)
+        with open(os.path.join(idx, "usage.jsonl"), "a") as f:
+            f.write(json.dumps(rec) + "\n")
+    except Exception:
+        pass
 
 
 def main():
@@ -82,6 +95,7 @@ def main():
         print(f"### {rel}  ({store or 'mem'}/{mtype or 'note'}, score {score:.2f})")
         print(snip)
         print()
+    log_hits(top)   # record what was recalled — the Watcher's usage signal
 
 
 if __name__ == "__main__":

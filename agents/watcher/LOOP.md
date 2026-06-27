@@ -46,7 +46,8 @@ OBSERVE ─▶ DETECT ─▶ §4 BOUNDARY TEST ─▶ PROPOSE (gated, → inbox)
 
 ## 3. What it observes (and what each becomes)
 
-It reads the mind (the `.mem` vault — sessions, decisions, what recurs) and the shape of the work. Seven
+It reads the mind (the `.mem` vault — sessions, decisions, what recurs), **usage signals** (`mem_usage.py`:
+recall hit-rates — what's recalled often vs never), and the shape of the work. Seven
 signal classes, each mapped to a gesture:
 
 | Signal it watches for | Proposal kind | Lands as |

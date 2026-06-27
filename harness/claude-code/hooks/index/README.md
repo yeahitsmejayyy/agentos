@@ -5,7 +5,10 @@ A derived, **fully-local** vector index over **both stores** — `.mem` (memory 
 ## What's here
 - `lib_embed.py` — embedding layer, three tiers (graceful, all local): **Ollama → sentence-transformers → hashing baseline**.
 - `mem_index.py` — builds/refreshes the index (incremental; `--rebuild` for full).
-- `mem_query.py` — semantic query; prints top matches (used by `recall-prompt.sh`).
+- `mem_query.py` — semantic query; prints top matches (used by `recall-prompt.sh`). Also appends each
+  recall to `.index/usage.jsonl` (best-effort) — the raw usage signal.
+- `mem_usage.py` — summarizes `usage.jsonl` + the index into **usage signals for the Watcher**: what's
+  recalled often (valuable) vs indexed-but-never-recalled (retire candidate). `--json` for machine use.
 - `reindex.sh` — convenience wrapper (for cron or manual runs).
 
 ## Embedding backends (pick with `AGENT_OS_EMBED`)
