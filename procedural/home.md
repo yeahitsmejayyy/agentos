@@ -15,7 +15,7 @@ the prose note becomes the module's README. Nothing is thrown away.
 
 | `kind` | What it is | Materializable? |
 |---|---|---|
-| `principle` | a plain-English rule (*"TanStack Table for all data grids"*) | no — recall only |
+| `principle` | a plain-English rule (*a one-line convention you'll reuse*) | no — recall only |
 | `pattern` | a convention with detail, maybe a snippet | no — recall only |
 | `module` | real, finished code **with its own tests** | **yes** — install the code |
 | `scaffold` | a whole starting point (e.g. the Skelly templates) | **yes** — install the project |

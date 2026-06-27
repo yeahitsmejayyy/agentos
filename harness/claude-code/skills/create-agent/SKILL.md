@@ -40,10 +40,11 @@ happen to be standing in.) The shipped agents (orchestrator, watcher) define in 
    complete draft; refine with the user rather than asking five questions.
 3. **Single-purpose check.** If the role carries two jobs, split it — propose two agents or narrow to one.
    (A worker growing a second job is the signal to split — the orchestrator's own rule, applied at birth.)
-4. **Scaffold — absolute path, never clobber.** Copy `$AGENT_OS_MEM/agents/_template/` →
-   `$AGENT_OS_MEM/agents/<name>/`, then write the filled `AGENT.md` into it. The memory subdirs
-   (`PROFILE.md`, `skills/`, `scratch/`) come with the template — so the agent's definition and its
-   memory share one portable folder. If `$AGENT_OS_MEM/agents/<name>/` already exists, show it and stop.
+4. **Scaffold — absolute path, never clobber.** Write the filled `AGENT.md` to
+   `$AGENT_OS_MEM/agents/<name>/AGENT.md` (the RISEN frame lives in `_template/AGENT.md`). **Write only
+   the definition** — do *not* pre-create `PROFILE.md` / `skills/` / `scratch/`. A new agent is just its
+   charter; its **memory accrues lazily**, created the first time it actually learns something. If
+   `$AGENT_OS_MEM/agents/<name>/` already exists, show it and stop.
 5. **Wire + close.** End the `AGENT.md` with the CONSTITUTION clauses this role most reinforces. No registry
    to edit — the orchestrator discovers its grown team by reading `$AGENT_OS_MEM/agents/*/AGENT.md` (the
    recall hook surfaces the roster at boot). Tell the user it's live and how to hand work to it.

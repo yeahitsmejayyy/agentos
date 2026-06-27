@@ -20,7 +20,7 @@ well. Then take exactly one door:
 
 - **Approve** → run the matching gesture **in-loop, against the real tree** (confirm the write first):
   - `promote-standard` → hand off to the `promote-standard` skill (writes the `.proc` module + its tests).
-  - `add-agent` → scaffold `$AGENT_OS_MEM/agents/<name>/` (AGENT.md + memory) from the mind's `_template/`, filled per the proposal (RISEN) — **absolute path, never the cwd** (grown agents live in the mind, not the repo).
+  - `add-agent` → write `$AGENT_OS_MEM/agents/<name>/AGENT.md` from the mind's `_template/`, filled per the proposal (RISEN) — **absolute path, never the cwd**; write only the definition (memory accrues lazily).
     *(Same scaffold the user can run deliberately via the `create-agent` skill — Watcher-proposed vs. user-asked are two triggers for one mechanism.)*
   - `add-skill` → scaffold `skills/<name>/SKILL.md` from the proposal.
   - `realign` → surface the drift and agree the correction with the user (no artifact — the change is the

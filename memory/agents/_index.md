@@ -7,11 +7,12 @@ This is also where a **grown** agent's **definition** lives — its `AGENT.md` (
 Notes here are **`memory_type: semantic`** (the primary axis; the agent profile is durable identity);
 `type: self` is the topic label. `scratch/` is ephemeral and not indexed.
 
-Layout:
-- `AGENT.md` — for a **grown** worker, its RISEN definition (written by `create-agent` / the Watcher's `add-agent`)
-- `PROFILE.md` — how the agent works, learned preferences, operating notes
-- `skills/` — self-written / learned skills (markdown)
-- `scratch/` — ephemeral working notes
+Layout — **`AGENT.md` is the *definition*; everything else is *memory* that accrues lazily.** A new agent
+is just its `AGENT.md`; the rest is created only when it first has something to remember:
+- `AGENT.md` — the agent's **definition** (its RISEN charter: who it is, what it does). Written at creation; changes deliberately.
+- `PROFILE.md` — the agent's **memory**: learned preferences, operating notes, how it's adapted from experience. Starts absent; grows.
+- `skills/` — self-written / learned techniques (markdown). Created when earned.
+- `scratch/` — ephemeral working notes. Created when needed.
 
 ## Recall scope (verified)
 

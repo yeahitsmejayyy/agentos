@@ -21,18 +21,11 @@ module's README).
 
 ## Principles
 
+_None yet — by design._ The first lands the moment you think *"I'll want this again."*
+
 <!--
-Example shape (uncomment and replace with a real, earned principle):
+Shape of a principle (uncomment and replace with a real, earned one):
 
-### Package manager
-We default to bun.
-
-### Data grids
-All data tables use TanStack Table, wrapped with sorting, pagination, column-resize, and a standard
-empty state. → when this earns code, graduate to modules/data-table/.
+### <Area>
+<The rule, in plain English.>  → if it later earns code, graduate to modules/<name>/.
 -->
-
-### Package manager
-Default to **bun**. A sensible default for JS/TS projects — use it for installs, scripts, and runtime unless a
-project says otherwise. Not dogmatic: pnpm, npm, and yarn are all fine when a repo, a teammate, or a
-constraint calls for them. Bun is the default, not a mandate — match the project you're in.
