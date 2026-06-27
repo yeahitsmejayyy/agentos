@@ -22,9 +22,10 @@ the prose note becomes the module's README. Nothing is thrown away.
 
 ## Two access modes
 - **Recall** — inject the standard as guidance (read the convention). Same as `.mem`.
-- **Materialize** — install the actual artifact into a project. **`.mem` never does this.** Flagged by
-  `materializable: true` on modules/scaffolds. *The materialization installer is deferred (Part B); the
-  flag is described and set now.*
+- **Materialize** — install the actual artifact into a project: a module's `src/` + its bundled `tests/`,
+  or a scaffold's starting point. **`.mem` never does this.** Flagged by `materializable: true` on
+  modules/scaffolds. Run it with the **`materialize`** skill (engine: `harness/claude-code/materialize.sh
+  <name> <target-dir>`) — it validates the flag, copies the code, and never overwrites existing files.
 
 ## A module ships its own oracle
 When a component graduates to a `module`, **its tests come with it** (`modules/<name>/tests/`). So a

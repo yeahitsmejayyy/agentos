@@ -22,7 +22,9 @@ with continuity. Materializing this module installs `src/` (and wires its deps) 
   the thing that already passes.
 
 ## Materialize
-<!-- How it installs into a project. The installer is Part B; describe the intended gesture here. -->
+Run the `materialize` skill (engine: `materialize.sh <name> <target-dir>`): it copies this module's
+`src/` + `tests/` into the target project, skipping anything already there. The bundled tests come with
+it — run them to confirm the install conforms.
 
 ## Tests / oracle
 <!-- What the tests assert — the definition of "good" this module guarantees. -->
