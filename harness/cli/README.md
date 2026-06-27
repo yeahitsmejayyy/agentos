@@ -7,9 +7,11 @@ wiring differs. Swap the harness; the OS and the mind come with you.
 
 ## Install
 ```bash
-bash harness/cli/install.sh        # instantiates the Mind (shared), makes `agentos` runnable
-ln -s "$PWD/harness/cli/agentos" ~/.local/bin/agentos   # optional: put it on PATH
+bash harness/cli/install.sh        # instantiates the Mind (shared)
+ln -s "$PWD/bin/agentos" ~/.local/bin/agentos   # optional: put the unified CLI on PATH
 ```
+The runtime verbs are served by the unified **`agentos`** CLI (`bin/agentos`), which delegates
+`boot`/`recall`/`capture`/`reindex` to this adapter's `run` script.
 
 ## Use
 ```bash
@@ -35,7 +37,8 @@ prepend its output; run `capture` at session end. The richer session summary com
 - **Shared, unchanged across adapters:** the OS (`agents/`, `shared/`), the Mind (`~/.agentos`), and the
   **index engine** (`../claude-code/hooks/index/` — the portable core; a natural candidate to hoist to
   `harness/_shared/index/` now that a second adapter exists).
-- **This adapter:** just the `agentos` shell entrypoint — the host-specific wiring of boot/recall/capture.
+- **This adapter:** just the `run` shell entrypoint — the host-specific wiring of boot/recall/capture
+  (reached via the unified `agentos`).
 
 That separation *is* the proof: genesis, recall, and capture all run here against the same seed, with no
 Claude Code hooks, settings, or `CLAUDE.md` in sight.

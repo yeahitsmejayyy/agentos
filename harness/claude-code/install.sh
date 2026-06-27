@@ -138,5 +138,6 @@ fi
 say ""
 say "✓ Agent OS installed."
 say "  Vault preserved if it already existed; adapter, settings, and bootloader are idempotent."
+say "  Tip: put the unified CLI on PATH →  ln -s $OS/bin/agentos ~/.local/bin/agentos   (then: agentos doctor)"
 say "  Next: open a NEW Claude Code session — the nameless orchestrator boots and runs genesis"
 say "  (names itself, forks the constitution into your words, writes your first memories)."

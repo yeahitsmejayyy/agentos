@@ -28,6 +28,23 @@ Re-run it any time to repair or update an install. It honors `AGENT_OS_HOME` (mi
 
 Then jump to **§5 · Genesis** (open a new session and name your instance) and **§6 · Verify**.
 
+### The `agentos` CLI (one front door)
+
+Prefer short commands from anywhere? `bin/agentos` is a thin router over the per-harness scripts:
+
+```bash
+ln -s "$PWD/bin/agentos" ~/.local/bin/agentos     # one-time: put it on PATH
+
+agentos install            # = bash harness/claude-code/install.sh   (or: agentos install cli)
+agentos doctor             # health check
+agentos uninstall [--purge]
+agentos materialize <name> <target-dir>           # install a .proc module's code
+agentos backup | restore                          # snapshot / restore the mind
+agentos boot | recall "<q>" | capture | reindex   # run Agent OS on a generic host (the cli adapter)
+```
+
+Every command just calls the script it names — the logic lives there, not in the dispatcher.
+
 **Check or undo an install:**
 
 ```bash

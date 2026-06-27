@@ -1,0 +1,58 @@
+#!/bin/bash
+# Agent OS — unified CLI. One front door over the per-harness scripts and the generic-host runtime.
+# It is **thin**: it only ROUTES; the logic lives in the adapter scripts (lean-seed). Sits ABOVE the
+# adapters, so it stays harness-agnostic.
+#
+#   Manage:  agentos install [claude-code|cli] [flags]   install an adapter (default: claude-code)
+#            agentos uninstall [--purge]                  remove the claude-code adapter (+ mind with --purge)
+#            agentos doctor                               health-check the install
+#            agentos materialize <name> <target-dir>      install a .proc module/scaffold's code
+#            agentos backup | restore                     snapshot / restore the mind
+#   Run:     agentos boot                                 print the system prompt (generic host)
+#            agentos recall "<text>"                      per-turn recall
+#            agentos capture [reason]                      capture floor — a session note
+#            agentos reindex [--rebuild]                  refresh the memory index
+#
+# Bootstrap: put it on PATH —  ln -s <repo>/bin/agentos ~/.local/bin/agentos
+set -uo pipefail
+OS="$(cd "$(dirname "$0")/.." && pwd)"      # repo root: bin/ -> ..
+CC="$OS/harness/claude-code"
+CLI="$OS/harness/cli"
+
+usage(){ cat <<'EOF'
+agentos — Agent OS CLI (one front door; routes to the adapter scripts)
+
+Manage the OS:
+  install [claude-code|cli] [flags]   install an adapter (default: claude-code)
+  uninstall [--purge]                 remove the claude-code adapter (--purge also deletes the mind)
+  doctor                              health-check the install
+  materialize <name> <target-dir>     install a .proc module/scaffold's code into a project
+  backup | restore                    snapshot / restore the mind
+
+Run as a generic host (the cli adapter):
+  boot                                print the system prompt (orchestrator + constitution + self + team)
+  recall "<text>"                     per-turn recall
+  capture [reason]                    capture floor — a raw session note
+  reindex [--rebuild]                 refresh the memory index
+EOF
+}
+
+route(){ local s="$1"; shift
+  [ -f "$s" ] || { echo "✗ not available yet: $(basename "$s") (the feature that provides it isn't built)"; exit 1; }
+  bash "$s" "$@"
+}
+
+cmd="${1:-}"; [ "$#" -gt 0 ] && shift
+case "$cmd" in
+  install)
+    h="claude-code"; case "${1:-}" in claude-code|cli) h="$1"; shift;; esac
+    route "$OS/harness/$h/install.sh" "$@" ;;
+  uninstall)   route "$CC/uninstall.sh"   "$@" ;;
+  doctor)      route "$CC/doctor.sh"      "$@" ;;
+  materialize) route "$CC/materialize.sh" "$@" ;;
+  backup)      route "$OS/bin/backup.sh"  backup  "$@" ;;
+  restore)     route "$OS/bin/backup.sh"  restore "$@" ;;
+  boot|recall|capture|reindex) bash "$CLI/run" "$cmd" "$@" ;;
+  ""|-h|--help|help) usage ;;
+  *) echo "unknown command: $cmd" >&2; echo; usage; exit 1 ;;
+esac
