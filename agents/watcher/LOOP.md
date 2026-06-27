@@ -46,7 +46,7 @@ OBSERVE ─▶ DETECT ─▶ §4 BOUNDARY TEST ─▶ PROPOSE (gated, → inbox)
 
 ## 3. What it observes (and what each becomes)
 
-It reads the mind (the `.mem` vault — sessions, decisions, what recurs) and the shape of the work. Five
+It reads the mind (the `.mem` vault — sessions, decisions, what recurs) and the shape of the work. Six
 signal classes, each mapped to a gesture:
 
 | Signal it watches for | Proposal kind | Lands as |
@@ -55,14 +55,16 @@ signal classes, each mapped to a gesture:
 | Repeated manual work that fits a single-purpose worker | **add-agent** | a new RISEN `AGENT.md` in the team (`propose-agent`) |
 | A repeated multi-step gesture | **add-skill** | a new skill the orchestrator/workers can invoke |
 | **Drift** — work or direction pulling away from the CONSTITUTION or the foundation-and-scope boundary | **realign** | a flagged proposal naming the drift + a course-correction (no artifact; the change is *the user's attention*) |
-| **A durable thing learned about the user**, not yet in their profile | **propose-self-update** | a gated update to `self/about-me` (the user model) |
+| **A durable thing learned about the user**, not yet in their profile | **propose-self-update** | a gated update to `self/PROFILE.md` (the user model) |
+| **A value or hard line the user has durably, clearly shown** | **propose-constitution-update** | a gated update to `self/CONSTITUTION.md` (Part 1 values / Part 3 non-negotiables) |
 
 The first three *grow the system*; the fourth *holds the line* on it — the same "hold the line" the
-orchestrator owns at the task altitude, raised to the system-evolution altitude. The fifth *grows the
-mind*: it curates `self/about-me` over time, which is exactly what lets **genesis stay light** — capture a
-seed at first run (just name + a values-seed), let the user model accrue through use rather than a long
-up-front interview. Drift proposals are how
-the Watcher guards against the system (or the user) quietly violating its own law or scope.
+orchestrator owns at the task altitude, raised to the system-evolution altitude. The last two *grow the
+self*: **propose-self-update** curates `self/PROFILE.md` (the user model), and **propose-constitution-update**
+grows `self/CONSTITUTION.md` (the user's law — Part 1 values, Part 3 non-negotiables). Both are what let
+**genesis stay light** — capture a seed at first run (just a name + one value), then let the model *and* the
+law accrue through use rather than a long up-front interview. Drift proposals are how the Watcher guards
+against the system (or the user) quietly violating its own law or scope.
 
 ---
 
@@ -86,10 +88,12 @@ can't show all six passing never reaches the inbox. *(This is the structural ant
 the Watcher is the one agent whose whole job is growth, so it is held to the strictest scope discipline.)*
 
 **Which bar applies to which kind.** The §4 test gates the three *system-growth* kinds (`promote-standard`,
-`add-agent`, `add-skill`) — the anti-feature-creep gate for adding to the OS. The other two aren't system
+`add-agent`, `add-skill`) — the anti-feature-creep gate for adding to the OS. The other three aren't system
 additions, so they have their own bars: **`realign`** fires on a *clear* CONSTITUTION/scope contradiction;
 **`propose-self-update`** fires only when something about the user is *durable, true, and worth keeping the
-profile high-signal* — curate the user model, never bloat it.
+profile high-signal* — curate the user model, never bloat it; **`propose-constitution-update`** fires only on
+a value or hard line *durably and clearly demonstrated* (repeated, not a passing mood) — it touches the law
+all agents answer to, so it carries the **highest bar** and the most careful review.
 
 ---
 
@@ -144,7 +148,7 @@ vague nudge. Build target:
 memory_type: episodic
 type: watcher-proposal
 date: <ISO-8601-UTC>
-kind: promote-standard | add-agent | add-skill | realign | propose-self-update
+kind: promote-standard | add-agent | add-skill | realign | propose-self-update | propose-constitution-update
 status: pending          # pending | approved | modified | rejected | snoozed
 confidence: low | med | high
 urgent: false            # true only if confidence AND value are both high
@@ -220,7 +224,7 @@ defer the automatic bar-tuning to v2 — record the decisions first, learn from 
 
 | Portable (OS plane — any harness) | Claude-Code-specific (this adapter) |
 |---|---|
-| The loop, the five signal classes, the §4 gate, the bar | The recall-side "N proposals waiting" surface in `recall-orient.sh` |
+| The loop, the six signal classes, the §4 gate, the bar | The recall-side "N proposals waiting" surface in `recall-orient.sh` |
 | The proposal file format + the four-door gate semantics | The `/watch` gesture + the gate gestures as `skills/` |
 | The sovereign-inbox + pure-pull principle | Any cadence wiring (cron / event hook) if/when v2 autonomy lands |
 | The upstream taste-loop design | — |

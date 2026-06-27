@@ -25,9 +25,12 @@ well. Then take exactly one door:
   - `add-skill` → scaffold `skills/<name>/SKILL.md` from the proposal.
   - `realign` → surface the drift and agree the correction with the user (no artifact — the change is the
     decision/attention itself).
-  - `propose-self-update` → append/refine the learned fact in `self/about-me` (the user model). Confirm the
+  - `propose-self-update` → append/refine the learned fact in `self/PROFILE.md` (the user model). Confirm the
     wording with the user; keep the profile high-signal (curate, don't dump). This is the gesture that
     *grows the mind* — it's what lets genesis stay light.
+  - `propose-constitution-update` → add/refine the value (Part 1) or hard line (Part 3) in
+    `self/CONSTITUTION.md`. **Highest care** — this is the law all agents answer to: show the exact
+    before/after, confirm explicitly, and never broaden beyond what the user actually demonstrated.
   Set the proposal `status: approved`.
 - **Modify** → adjust the proposal with the user, then approve the adjusted version. Record **what changed**
   (the highest-value taste signal). `status: modified`.

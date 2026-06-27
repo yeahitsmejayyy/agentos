@@ -150,7 +150,7 @@ into unhealthy **dependency**. Genesis takes ownership and refuses dependency:
 
 **Open items for the build (task 20):**
 1. Rewrite `skills/genesis/SKILL.md` to the v2 wake + three beats + close (replace the 7-question flow).
-2. Default the voice (don't ask); write the `about-me` **stub** instead of capturing a profile.
+2. Default the voice (don't ask); write the `PROFILE.md` **stub** instead of capturing a profile.
 3. Weave the values-seed into `self/CONSTITUTION.md` Part 1 (don't make the user read/fork the frame).
 4. Ship a small `/reshape` (a.k.a. `/rename`) gesture for later edits — nearly free under §1-A.
 5. Keep: vault-only writes, the sentinel, reindex-on-finish, narrate-lightly.
