@@ -46,7 +46,7 @@ OBSERVE ─▶ DETECT ─▶ §4 BOUNDARY TEST ─▶ PROPOSE (gated, → inbox)
 
 ## 3. What it observes (and what each becomes)
 
-It reads the mind (the `.mem` vault — sessions, decisions, what recurs) and the shape of the work. Six
+It reads the mind (the `.mem` vault — sessions, decisions, what recurs) and the shape of the work. Seven
 signal classes, each mapped to a gesture:
 
 | Signal it watches for | Proposal kind | Lands as |
@@ -57,11 +57,14 @@ signal classes, each mapped to a gesture:
 | **Drift** — work or direction pulling away from the CONSTITUTION or the foundation-and-scope boundary | **realign** | a flagged proposal naming the drift + a course-correction (no artifact; the change is *the user's attention*) |
 | **A durable thing learned about the user**, not yet in their profile | **propose-self-update** | a gated update to `self/PROFILE.md` (the user model) |
 | **A value or hard line the user has durably, clearly shown** | **propose-constitution-update** | a gated update to `self/CONSTITUTION.md` (Part 1 values / Part 3 non-negotiables) |
+| **An agent / skill / standard gone unused over a sustained window** | **propose-retire** | a gated **archive** of the artifact (reversible, never deleted) |
 
 The first three *grow the system*; the fourth *holds the line* on it — the same "hold the line" the
 orchestrator owns at the task altitude, raised to the system-evolution altitude. The last two *grow the
 self*: **propose-self-update** curates `self/PROFILE.md` (the user model), and **propose-constitution-update**
-grows `self/CONSTITUTION.md` (the user's law — Part 1 values, Part 3 non-negotiables). Both are what let
+grows `self/CONSTITUTION.md` (the user's law — Part 1 values, Part 3 non-negotiables). And the seventh,
+**propose-retire**, *prunes the system* — gating the **archive** of an agent/skill/standard gone unused
+(reversible), the lean-first counterweight so growth never becomes bloat. The two self-updates are what let
 **genesis stay light** — capture a seed at first run (just a name + one value), then let the model *and* the
 law accrue through use rather than a long up-front interview. Drift proposals are how the Watcher guards
 against the system (or the user) quietly violating its own law or scope.
@@ -93,7 +96,9 @@ additions, so they have their own bars: **`realign`** fires on a *clear* CONSTIT
 **`propose-self-update`** fires only when something about the user is *durable, true, and worth keeping the
 profile high-signal* — curate the user model, never bloat it; **`propose-constitution-update`** fires only on
 a value or hard line *durably and clearly demonstrated* (repeated, not a passing mood) — it touches the law
-all agents answer to, so it carries the **highest bar** and the most careful review.
+all agents answer to, so it carries the **highest bar** and the most careful review; **`propose-retire`**
+fires on the *inverse* of recurrence — an artifact demonstrably **unused** over a sustained window (no recall
+hits, never invoked) — and only ever **archives** (reversible), never deletes.
 
 ---
 
@@ -148,7 +153,7 @@ vague nudge. Build target:
 memory_type: episodic
 type: watcher-proposal
 date: <ISO-8601-UTC>
-kind: promote-standard | add-agent | add-skill | realign | propose-self-update | propose-constitution-update
+kind: promote-standard | add-agent | add-skill | realign | propose-self-update | propose-constitution-update | propose-retire
 status: pending          # pending | approved | modified | rejected | snoozed
 confidence: low | med | high
 urgent: false            # true only if confidence AND value are both high
@@ -224,7 +229,7 @@ defer the automatic bar-tuning to v2 — record the decisions first, learn from 
 
 | Portable (OS plane — any harness) | Claude-Code-specific (this adapter) |
 |---|---|
-| The loop, the six signal classes, the §4 gate, the bar | The recall-side "N proposals waiting" surface in `recall-orient.sh` |
+| The loop, the seven signal classes, the §4 gate, the bar | The recall-side "N proposals waiting" surface in `recall-orient.sh` |
 | The proposal file format + the four-door gate semantics | The `/watch` gesture + the gate gestures as `skills/` |
 | The sovereign-inbox + pure-pull principle | Any cadence wiring (cron / event hook) if/when v2 autonomy lands |
 | The upstream taste-loop design | — |

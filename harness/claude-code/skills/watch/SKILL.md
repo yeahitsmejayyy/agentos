@@ -16,7 +16,7 @@ only output is **gated proposals** written to your inbox; the user decides later
 
 ## Observe (read the mind)
 Read recent `sessions/`, `decisions/`, the user model `self/`, and the law `self/CONSTITUTION.md` (fall
-back to `shared/CONSTITUTION.md`). Look **across distinct sessions** for six signal classes:
+back to `shared/CONSTITUTION.md`). Look **across distinct sessions** for seven signal classes:
 
 | Signal | Proposal kind |
 |---|---|
@@ -26,6 +26,7 @@ back to `shared/CONSTITUTION.md`). Look **across distinct sessions** for six sig
 | Work/direction drifting from the CONSTITUTION or the foundation-scope boundary | `realign` |
 | A durable thing learned about the user, not yet in their profile | `propose-self-update` |
 | A value or hard line the user has durably, clearly shown | `propose-constitution-update` |
+| An agent / skill / standard gone unused over a sustained window | `propose-retire` |
 
 ## Apply the bar (silence is a feature)
 A candidate qualifies ONLY if it has **recurred ≥ 3 times across ≥ 2 distinct sessions** (a `realign` may
@@ -37,11 +38,13 @@ For each `promote-standard` / `add-agent` / `add-skill` candidate, show each gat
 5. **Keeps the invariants** (portable / sovereign / least-privilege / no-slop) 6. **Earns its complexity**.
 If you can't show all six, it's feature creep — do **not** propose it.
 
-The other three kinds aren't system additions, so they skip §4 and use their own bar: **`realign`** needs a
+The other four kinds aren't system additions, so they skip §4 and use their own bar: **`realign`** needs a
 *clear* CONSTITUTION/scope contradiction; **`propose-self-update`** needs something about the user that is
-*durable, true, and worth keeping the profile high-signal* — curate `self/PROFILE.md`, never bloat it; and
+*durable, true, and worth keeping the profile high-signal* — curate `self/PROFILE.md`, never bloat it;
 **`propose-constitution-update`** needs a value or hard line *durably and clearly demonstrated* (repeated,
-not a passing mood) — it touches the law all agents answer to, so it carries the **highest bar**.
+not a passing mood) — it touches the law all agents answer to, so it carries the **highest bar**; and
+**`propose-retire`** is the *inverse* — an artifact demonstrably **unused** over a sustained window (no
+recall hits, never invoked) — and only ever **archives** it (reversible), never deletes.
 
 ## Write the proposal(s) — to the inbox, never the OS
 For each qualifying candidate, write `$MEM/agents/watcher/inbox/<YYYY-MM-DD>_<slug>.md`:
@@ -50,7 +53,7 @@ For each qualifying candidate, write `$MEM/agents/watcher/inbox/<YYYY-MM-DD>_<sl
 memory_type: episodic
 type: watcher-proposal
 date: <run: date -u +%Y-%m-%dT%H:%M:%SZ>
-kind: promote-standard | add-agent | add-skill | realign | propose-self-update | propose-constitution-update
+kind: promote-standard | add-agent | add-skill | realign | propose-self-update | propose-constitution-update | propose-retire
 status: pending
 confidence: low | med | high
 urgent: false        # true ONLY if confidence AND value are both high

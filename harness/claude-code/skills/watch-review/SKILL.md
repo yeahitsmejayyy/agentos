@@ -31,6 +31,9 @@ well. Then take exactly one door:
   - `propose-constitution-update` → add/refine the value (Part 1) or hard line (Part 3) in
     `self/CONSTITUTION.md`. **Highest care** — this is the law all agents answer to: show the exact
     before/after, confirm explicitly, and never broaden beyond what the user actually demonstrated.
+  - `propose-retire` → **archive, don't delete**: move the named agent / skill / standard to a `.retired/`
+    area in its store (e.g. `.mem/agents/.retired/<name>/`) — fully reversible (restore by moving it back).
+    Confirm it's genuinely unused first.
   Set the proposal `status: approved`.
 - **Modify** → adjust the proposal with the user, then approve the adjusted version. Record **what changed**
   (the highest-value taste signal). `status: modified`.

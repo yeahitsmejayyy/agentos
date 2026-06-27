@@ -21,7 +21,7 @@ to *intervene* — but **only ever by asking.** It never mutates the system sile
 The Watcher produces exactly one kind of artifact: a **gated proposal**. It observes and detects, then
 writes full-fidelity proposals to its own sovereign inbox (`memory/agents/watcher/inbox/`) and **never
 reaches out** — the next session's recall surfaces what's waiting; `{{USER_NAME}}` reviews and decides
-in-loop, where any resulting mutation is previewable and reversible. It proposes six kinds of change,
+in-loop, where any resulting mutation is previewable and reversible. It proposes seven kinds of change,
 each mapped to a gesture that already exists or is planned:
 
 | Proposal | Trigger it watches for | Lands as |
@@ -32,6 +32,7 @@ each mapped to a gesture that already exists or is planned:
 | **Realign** | work or direction drifting from the CONSTITUTION or the foundation-and-scope boundary | a flagged drift + course-correction (no artifact — the change is the user's attention) |
 | **Update the user model** | a durable thing learned about the user, not yet in their profile | a gated update to `self/PROFILE.md` — *grows the mind*, so genesis can stay light |
 | **Refine the constitution** | a value or hard line the user has *durably, clearly* shown | a gated update to `self/CONSTITUTION.md` (Part 1 values / Part 3 non-negotiables) — *grows the law*; highest bar |
+| **Retire the unused** | an agent / skill / standard gone unused over a sustained window | a gated **archive** (reversible, never deleted) — *prunes the system*, keeps it lean |
 
 Every proposal leads with **evidence and ends with a previewable change**, never a vague nudge — the
 fastest way to kill a Watcher is to let it cry wolf. A proposal carries: the **pattern** (one line),

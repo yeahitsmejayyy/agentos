@@ -37,7 +37,7 @@ grep_absent "standards ship near-empty (no live bun principle)" "default to \*\*
 
 # --- Watcher: all six proposal kinds present + consistent ---
 loop="$(cat "$SEED_ROOT/agents/watcher/LOOP.md")"
-for k in promote-standard add-agent add-skill realign propose-self-update propose-constitution-update; do
+for k in promote-standard add-agent add-skill realign propose-self-update propose-constitution-update propose-retire; do
   contains "watcher LOOP: kind '$k' present" "$loop" "$k"
 done
 grep_absent "watcher: no stale 'about-me' refs (renamed to PROFILE.md)" "self/about-me" \
