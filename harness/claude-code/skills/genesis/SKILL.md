@@ -44,8 +44,8 @@ own words in the moment, under the CONSTITUTION.* Everything is skippable → ap
 2. **Name you** — *"And you — what should I call you?"* → user name to `self/IDENTITY.md`. *Default:* the
    OS account name.
 3. **A values seed** — *"Last thing — if I only ever honor one thing you stand for, what is it?"* →
-   weave their answer into `self/CONSTITUTION.md` (Part 1, atop the default frame). *Default:* adopt the
-   frame as-is.
+   write their answer as the **North Star** in `self/CONSTITUTION.md`. *Default:* if they skip, leave the
+   North Star empty (and Part 1) — it fills later.
 
 **Do NOT ask** for a voice preset, who they are, what they do, or their goals — and **don't** make them
 read or fork the whole constitution. Those aren't lost; they **compound** (the Watcher proposes profile
@@ -65,7 +65,7 @@ in and let it grow.
 | File | Holds | `memory_type` |
 |---|---|---|
 | `self/IDENTITY.md` | orchestrator **name** + user **name** + a **default voice** (below — *not asked*) | `semantic` |
-| `self/CONSTITUTION.md` | the default CONSTITUTION frame with their **one values-seed** woven into Part 1 | `semantic` |
+| `self/CONSTITUTION.md` | the default frame with their **one guiding value** set as the **North Star** (Part 1 empty, grows) | `semantic` |
 | `self/PROFILE.md` | a **stub** — the user model *grows from here*; don't capture it now | `semantic` |
 | `sessions/<YYYY-MM-DD>_genesis.md` | the first episodic note: you woke, got named, did the first task | `episodic` |
 
@@ -103,9 +103,10 @@ _The user model grows from here. I'll learn how <user> works as we go and keep t
 Watcher will propose updates when it notices something durable. Nothing front-loaded, by design._
 ```
 
-For `self/CONSTITUTION.md`: copy the default frame (`shared/CONSTITUTION.md`), weave their values-seed
-into Part 1, and replace the `{{USER_NAME}}` placeholders with their name; leave the rest as the working
-default. They can `/reshape` it anytime.
+For `self/CONSTITUTION.md`: copy the default frame (`shared/CONSTITUTION.md`), set their values-seed as
+the **North Star** (leave Part 1 empty — it grows over time), and replace `{{USER_NAME}}` with their
+name; leave the rest as the working default. If they skipped the seed, leave the North Star empty too.
+They can `/reshape` anytime.
 
 ## Finalize — make the new identity recallable now
 After writing the `self/` files, rebuild the index so the just-written identity is recallable this

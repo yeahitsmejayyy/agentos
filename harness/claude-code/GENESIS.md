@@ -66,7 +66,7 @@ it.
 |---|---|---|---|---|
 | 1 | **Name me** | *"What do you want to call me?"* | `self/IDENTITY.md` → orchestrator name | `Orchestrator` (renameable anytime) |
 | 2 | **Name you** | *"And you — what should I call you?"* | `self/IDENTITY.md` → user name | the OS account name |
-| 3 | **A values seed** | *"Last thing — if I only ever honor one thing you stand for, what is it?"* | `self/CONSTITUTION.md` → the seed woven into the default frame | adopt the default frame as-is |
+| 3 | **A values seed** | *"Last thing — if I only ever honor one thing you stand for, what is it?"* | `self/CONSTITUTION.md` → the seed set as the **North Star** | skip → North Star left empty (fills later) |
 
 **That's the whole interview.** No "who are you," no "what are we doing," no voice-preset menu, no
 read-the-whole-constitution. Those were v1's weight — they all **compound** instead (§1-B).
@@ -86,7 +86,7 @@ IKEA-effect completion), and it presumes no team (orchestrator-only seed).
 | Vault file | Holds | Note |
 |---|---|---|
 | `self/IDENTITY.md` | orchestrator **name** + user **name** + a **default voice** (warm, present — *not asked*, reshapeable later) | the name anchor; read live |
-| `self/CONSTITUTION.md` | the default CONSTITUTION **frame** with the user's one **values-seed** woven into Part 1 | the law; grows via `/reshape` + the Watcher |
+| `self/CONSTITUTION.md` | the **frame**: the user's one guiding value set as the **North Star** (Part 1 + Part 3 empty, grow over time) | the law; grows via `/reshape` + the Watcher |
 | `self/PROFILE.md` | a **stub** — *"the user model grows from here"* | deliberately near-empty; capture + the Watcher fill it over time (ticket 21) |
 | `sessions/<date>_genesis.md` | the first episodic note (genesis happened + the first real task) | the real first memory |
 
@@ -151,7 +151,7 @@ into unhealthy **dependency**. Genesis takes ownership and refuses dependency:
 **Open items for the build (task 20):**
 1. Rewrite `skills/genesis/SKILL.md` to the v2 wake + three beats + close (replace the 7-question flow).
 2. Default the voice (don't ask); write the `PROFILE.md` **stub** instead of capturing a profile.
-3. Weave the values-seed into `self/CONSTITUTION.md` Part 1 (don't make the user read/fork the frame).
+3. Set the values-seed as the **North Star** in `self/CONSTITUTION.md`; leave Part 1 empty (it grows). Don't make the user read/fork the frame.
 4. Ship a small `/reshape` (a.k.a. `/rename`) gesture for later edits — nearly free under §1-A.
 5. Keep: vault-only writes, the sentinel, reindex-on-finish, narrate-lightly.
 
