@@ -41,4 +41,13 @@ env HOME="$T" bash "$BIN" backup >/dev/null 2>&1; rc=$?
 eq "agentos backup: runs through the dispatcher" "0" "$rc"
 if ls "$T"/.agentos-snapshots/mind-*.tar.gz >/dev/null 2>&1; then ok "agentos backup: snapshot lands outside the mind"; else no "agentos backup: snapshot lands outside the mind"; fi
 
+# list shows the snapshot we just made
+lst="$(env HOME="$T" bash "$BIN" list 2>/dev/null || true)"
+contains "agentos list: shows the snapshot" "$lst" "mind-"
+
+# regression: invoked via a SYMLINK (the on-PATH case) must still resolve the real repo root
+LN="$T/agentos-symlink"; ln -s "$BIN" "$LN"
+out="$(env HOME="$T" bash "$LN" boot 2>/dev/null || true)"
+contains "agentos via symlink: resolves repo root (boot works)" "$out" "Orchestrator"
+
 rm -rf "$T"

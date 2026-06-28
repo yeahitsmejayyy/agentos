@@ -15,7 +15,13 @@
 #
 # Bootstrap: put it on PATH —  ln -s <repo>/bin/agentos ~/.local/bin/agentos
 set -uo pipefail
-OS="$(cd "$(dirname "$0")/.." && pwd)"      # repo root: bin/ -> ..
+# Resolve through symlinks (this script is meant to be symlinked onto PATH) to find the real repo root.
+SOURCE="${BASH_SOURCE[0]}"
+while [ -L "$SOURCE" ]; do
+  D="$(cd -P "$(dirname "$SOURCE")" && pwd)"; SOURCE="$(readlink "$SOURCE")"
+  [ "${SOURCE#/}" = "$SOURCE" ] && SOURCE="$D/$SOURCE"   # relative link → absolutize
+done
+OS="$(cd -P "$(dirname "$SOURCE")/.." && pwd)"           # repo root: bin/ -> ..
 CC="$OS/harness/claude-code"
 CLI="$OS/harness/cli"
 
@@ -27,7 +33,7 @@ Manage the OS:
   uninstall [--purge]                 remove the claude-code adapter (--purge also deletes the mind)
   doctor                              health-check the install
   materialize <name> <target-dir>     install a .proc module/scaffold's code into a project
-  backup | restore                    snapshot / restore the mind
+  backup | restore | list             snapshot / restore the mind · list snapshots
 
 Run as a generic host (the cli adapter):
   boot                                print the system prompt (orchestrator + constitution + self + team)
@@ -52,6 +58,7 @@ case "$cmd" in
   materialize) route "$CC/materialize.sh" "$@" ;;
   backup)      route "$OS/bin/backup.sh"  backup  "$@" ;;
   restore)     route "$OS/bin/backup.sh"  restore "$@" ;;
+  list)        route "$OS/bin/backup.sh"  list ;;
   boot|recall|capture|reindex) bash "$CLI/run" "$cmd" "$@" ;;
   ""|-h|--help|help) usage ;;
   *) echo "unknown command: $cmd" >&2; echo; usage; exit 1 ;;

@@ -21,6 +21,9 @@ CLAUDE.md
 # Personal test-drive harness — copies live credentials into a throwaway; must never ship.
 seedtest.sh
 
+# Local docs — working notes / generated overviews for content prep; not part of the shipped seed.
+.docs/
+
 # A grown instance's live mind should never live in the seed repo.
 # (The mind homes at $AGENT_OS_HOME, default ~/.agentos — outside this tree.)
 .agentos/
