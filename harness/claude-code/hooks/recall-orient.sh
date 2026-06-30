@@ -16,14 +16,20 @@ if [ ! -f "$MEM_DIR/self/IDENTITY.md" ]; then
   echo
 fi
 
+# IDENTITY FIRST — the name anchor. SessionStart hook stdout is capped when injected
+# into context (oversized output is persisted to a file and only a small preview is
+# injected), so identity MUST lead or it gets truncated away and the orchestrator
+# boots not knowing its own name. Tiny (~0.5 KB); always survives the preview window.
+[ -f "$MEM_DIR/self/IDENTITY.md" ] && { echo "## Identity (self/IDENTITY.md) — who you are"; cat "$MEM_DIR/self/IDENTITY.md"; echo; }
+
 [ -f "$MEM_DIR/home.md" ] && { echo "## Memory index (.mem/home.md)"; cat "$MEM_DIR/home.md"; echo; }
 
 # The forked CONSTITUTION is the law — inject it in FULL (not under the capped self/ block below).
 [ -f "$MEM_DIR/self/CONSTITUTION.md" ] && { echo "## Constitution (the user's forked law — self/CONSTITUTION.md)"; cat "$MEM_DIR/self/CONSTITUTION.md"; echo; }
 
 if [ -d "$MEM_DIR/self" ]; then
-  echo "## Self (identity + user model)"
-  find "$MEM_DIR/self" -name '*.md' ! -name '_index.md' ! -name 'CONSTITUTION.md' -exec cat {} \; 2>/dev/null | head -c 4000 || true
+  echo "## Self (user model)"
+  find "$MEM_DIR/self" -name '*.md' ! -name '_index.md' ! -name 'CONSTITUTION.md' ! -name 'IDENTITY.md' -exec cat {} \; 2>/dev/null | head -c 4000 || true
   echo
 fi
 
